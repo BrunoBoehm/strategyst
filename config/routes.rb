@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :pocs
   resources :strategies
   resources :objectives
-  resources :value_propositions
+  resources :value_propositions do
+    resources :personas, only: [:new]
+  end
   resources :segments do
     resources :personas, only: [:new]
     resources :objectives, only: [:new]
