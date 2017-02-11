@@ -1,0 +1,24 @@
+<!-- Use example -->
+<%= render partial: "shared/show_model", locals: {model: @segment, columns: 12} %>
+
+<div class="col-md-<%= columns %>">
+
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">
+		  <h3 class="panel-title text-center"><%= model.send("#{model.attributes.keys[1]}") %></h3>
+		</div>
+
+		<!-- List group -->
+		<ul class="list-group">
+			<% model.attributes.keys[2..-3].each do |key| %>	
+			  <li class="list-group-item"><strong><%= key.titleize %></strong><br> <%= model.send("#{key}") %></li>
+			<% end %>
+		</ul>
+
+		<div class="panel-body">
+		  <%= link_to "Edit", "edit_#{model.class.name.downcase}_path(#{model})", class: "btn btn-sm btn-default pull-right" %>
+		</div>
+	</div>
+	
+</div>

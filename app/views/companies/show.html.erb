@@ -71,7 +71,7 @@
 </p>
 
 <hr>
-<h3>Points of Contact</h3>
+<h3>Points of Contact <span class="badge"><%= @company.pocs.count %></span></h3>
 <div class="row">
   <% @company.pocs.each do |poc| %>
     <div class="col-md-4">
@@ -99,7 +99,35 @@
   <% end %>
 </div>
 
-<h3>Value Propositions</h3>
+<h3>Segments <span class="badge"><%= @company.segments.count %></span></h3>
+<div class="row">
+  <% @company.segments.each do |segment| %>
+    <div class="col-md-4">
+
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+          <h3 class="panel-title text-center"><%= segment.name %></h3>
+        </div>
+
+        <!-- List group -->
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Description:</strong><br> <%= segment.description %></li>
+          <li class="list-group-item"><strong>Size:</strong><br> <%= segment.size %></li>
+          <li class="list-group-item"><strong>Growth:</strong><br> <%= segment.growth %></li>
+        </ul>
+
+        <div class="panel-body">
+          <%= link_to "Edit", edit_segment_path(segment), class: "btn btn-sm btn-default pull-right" %>
+        </div>
+      </div>
+
+    </div> <!-- close col-md-4 -->
+  <% end %>
+</div>   <!-- close row -->
+
+
+<h3>Value Propositions <span class="badge"><%= @company.value_propositions.count %></span></h3>
 <div class="row">
   <% @company.value_propositions.each do |vp| %>
     <div class="col-md-4">
