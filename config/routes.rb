@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :companies
   get 'static_pages/dashboard'
 
-  get 'static_pages/frontpage'
+  root 'static_pages#frontpage'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
