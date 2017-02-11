@@ -267,11 +267,13 @@
         <ul class="list-group">
           <li class="list-group-item"><strong>Objective</strong><br> <%= link_to strategy.objective.specific, strategy.objective %></li>
           <li class="list-group-item"><strong>Description</strong><br> <%= simple_format strategy.description %></li>
-          <li class="list-group-item"><strong>KSF</strong><br> <%= simple_format strategy.ksf %></li>
+          <li class="list-group-item"><strong>Key Success Factors</strong><br> <%= simple_format strategy.ksf %></li>
           <li class="list-group-item"><strong>Tactics</strong> <br>
             <ul>
               <% strategy.tactics.each do |tactic| %>
-                <li><%= link_to tactic.pitch, tactic %></li>
+                <li><%= link_to tactic.pitch, tactic %> <br>
+                  (prio <%= tactic.importance %>)
+                </li>
               <% end %>
             </ul>
           </li>
@@ -281,7 +283,7 @@
 
 
           <div class="btn-group pull-right" role="group" aria-label="...">
-            <%= link_to "Add Strategy", new_strategy_tactic_path(strategy), class: "btn btn-sm btn-default" %>
+            <%= link_to "Add Tactic", new_strategy_tactic_path(strategy), class: "btn btn-sm btn-default" %>
             <%= link_to "Edit", edit_strategy_path(strategy), class: "btn btn-sm btn-default" %>
           </div>
           
@@ -292,8 +294,46 @@
   <% end %>
 </div>   <!-- close row -->
 
+<hr>
+<h3>Tactics <span class="badge"><%= @tactics.count %></span></h3>
+<div class="row">
+  <% @tactics.each do |tactic| %>
+    <div class="col-md-4">
+
+      <div class="panel panel-danger">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+          <h3 class="panel-title text-center"><%= tactic.pitch %></h3>
+        </div>
+
+        <!-- List group -->
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Strategy</strong><br> <%= link_to tactic.strategy.pitch, tactic.strategy %></li>
+          <li class="list-group-item"><strong>Plan</strong><br>
+            €<%= tactic.budget %><br>
+            <%= tactic.frequency %><br>from <%= tactic.start.strftime("%a %-d, %b %Y") %> to <%= tactic.end.strftime("%a %-d, %b %Y") %>
+          </li>
+          <li class="list-group-item"><strong>Description</strong><br> <%= simple_format tactic.description %></li>
+          <li class="list-group-item"><strong>Medium</strong><br> <%= simple_format tactic.medium %></li>
+          <li class="list-group-item"><strong>Key Performance Indicator</strong><br> <%= simple_format tactic.kpi %></li>
+          <li class="list-group-item"><strong>POC</strong><br> <%= link_to tactic.poc.name, tactic.poc %></li>
+        </ul>
+
+        <div class="panel-body">
+
+          <div class="btn-group pull-right" role="group" aria-label="...">
+            <%= link_to "Edit", edit_tactic_path(tactic), class: "btn btn-sm btn-default" %>
+          </div>
+          
+        </div>
+      </div>
+
+    </div> <!-- close col-md-4 -->
+  <% end %>
+</div>   <!-- close row -->
+
 <ul class="pager">
-  <li><%= link_to 'Edit', edit_company_path(@company) %></li>
-  <li><%= link_to 'Back', companies_path %></li>
+  <li><%= link_to 'Edit Company', edit_company_path(@company) %></li>
+  <li><%= link_to 'All Companies', companies_path %></li>
 </ul>
 

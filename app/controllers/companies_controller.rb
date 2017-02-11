@@ -13,6 +13,7 @@ class CompaniesController < ApplicationController
     @segments = @company.segments
     @objectives = @segments.map(&:objectives).flatten
     @strategies = @objectives.map(&:strategies).flatten
+    @tactics = @strategies.map(&:tactics).flatten
     @personas = @segments.map(&:personas).flatten
   end
 

@@ -14,7 +14,13 @@ class TacticsController < ApplicationController
 
   # GET /tactics/new
   def new
-    @tactic = Tactic.new
+    if params[:strategy_id]
+      @tactic = Tactic.new(strategy_id: params[:strategy_id])
+    elsif params[:poc_id]
+      @tactic = Tactic.new(poc_id: params[:poc_id])
+    else
+      @tactic = Tactic.new
+    end
   end
 
   # GET /tactics/1/edit
