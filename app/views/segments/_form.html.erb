@@ -11,27 +11,36 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="well">   
+
+      <div class="input-group">
+        <%= f.label :name, class: "input-group-addon" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="input-group">
+        <%= f.label :description, class: "input-group-addon" %>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+      <div class="input-group">
+        <%= f.label :size, class: "input-group-addon" %>
+        <%= f.number_field :size, class: "form-control" %>
+      </div>
+      <div class="input-group">
+        <%= f.label :growth %>
+        <%= f.select :growth, options_for_select(Segment.growths.collect { |s| [s[0].humanize, s[0]] }) %>
+      </div>
+      <div class="input-group">
+        <%= f.label :company_id %>
+        <%= f.collection_select :company_id, Company.order(:name), :id, :name, include_blank: "Nothing selected" %>
+      </div>
+
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :size %><br>
-    <%= f.number_field :size %>
-  </div>
-  <div class="field">
-    <%= f.label :growth %><br>
-    <%= f.number_field :growth %>
-  </div>
-  <div class="field">
-    <%= f.label :company_id %><br>
-    <%= f.text_field :company_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+</div>
+
+  <div class="actions text-center">
+    <%= f.submit class: "btn btn-success" %>
   </div>
 <% end %>

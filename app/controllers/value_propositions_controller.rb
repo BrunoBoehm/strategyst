@@ -14,7 +14,12 @@ class ValuePropositionsController < ApplicationController
 
   # GET /value_propositions/new
   def new
-    @value_proposition = ValueProposition.new
+    if params[:company_id]
+      @value_proposition = ValueProposition.new(company_id: params[:company_id])
+    else
+      @value_proposition = ValueProposition.new
+    end
+    
   end
 
   # GET /value_propositions/1/edit

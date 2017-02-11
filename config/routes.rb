@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :segments
   resources :companies do
     resources :pocs, only: [:new]
+    resources :value_propositions, only: [:new]
+    resources :segments, only: [:new]
   end
   get 'static_pages/dashboard'
 

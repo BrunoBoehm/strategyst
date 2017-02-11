@@ -14,7 +14,11 @@ class SegmentsController < ApplicationController
 
   # GET /segments/new
   def new
-    @segment = Segment.new
+    if params[:company_id]
+      @segment = Segment.new(company_id: params[:company_id])
+    else
+      @segment = Segment.new
+    end
   end
 
   # GET /segments/1/edit

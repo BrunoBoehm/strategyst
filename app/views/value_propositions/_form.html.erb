@@ -11,39 +11,56 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :product_service %><br>
-    <%= f.text_area :product_service %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.number_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :promotion %><br>
-    <%= f.text_area :promotion %>
-  </div>
-  <div class="field">
-    <%= f.label :place %><br>
-    <%= f.text_area :place %>
-  </div>
-  <div class="field">
-    <%= f.label :gain_creator %><br>
-    <%= f.text_area :gain_creator %>
-  </div>
-  <div class="field">
-    <%= f.label :pain_reliever %><br>
-    <%= f.text_area :pain_reliever %>
-  </div>
-  <div class="field">
-    <%= f.label :differentiation %><br>
-    <%= f.text_area :differentiation %>
-  </div>
-  <div class="field">
-    <%= f.label :company_id %><br>
-    <%= f.text_field :company_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+    <h2 class="text-center">Marketing Mix</h2>
+      <div class="well">
+
+          <div class="input-group">
+            <%= f.label :product_service, class: "input-group-addon" %>
+            <%= f.text_area :product_service, class: "form-control", placeholder: "Product or Service description" %>
+          </div>
+          <div class="input-group">
+            <%= f.label :price, class: "input-group-addon" %>
+            <%= f.number_field :price, class: "form-control", placeholder: "What's the price point?" %>
+          </div>
+          <div class="input-group">
+            <%= f.label :promotion, class: "input-group-addon" %>
+            <%= f.text_area :promotion, class: "form-control", placeholder: "Promotion strategy description" %>
+          </div>
+          <div class="input-group">
+            <%= f.label :place, class: "input-group-addon" %>
+            <%= f.text_area :place, class: "form-control", placeholder: "Where can we find the product/service?" %>
+          </div>
+          <div class="input-group">
+            <%= f.label :differentiation, class: "input-group-addon" %>
+            <%= f.text_area :differentiation, class: "form-control", placeholder: "What's the Unique Selling Point, positioning?" %>
+          </div>        
+      </div> <!-- end of well -->
+
+    <h2 class="text-center">Value Proposition Canvas</h2>    
+      <div class="well">
+
+        <div class="input-group">
+          <%= f.label :gain_creator, class: "input-group-addon" %>
+          <%= f.text_area :gain_creator, class: "form-control" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :pain_reliever, class: "input-group-addon" %>
+          <%= f.text_area :pain_reliever, class: "form-control" %>
+        </div>
+        <div class="input-group">
+          <%= f.label :company_id, "Value Proposition for Company" %>
+          <%= f.collection_select :company_id, Company.order(:name), :id, :name, include_blank: "Nothing selected" %>
+        </div>
+
+      </div>  <!-- end of well -->
+     
+      <div class="actions text-center">
+        <%= f.submit class: "btn btn-success" %>
+      </div>
+
+  </div>  <!-- end of col-md-6 -->
+</div>  <!-- end of row -->
 <% end %>

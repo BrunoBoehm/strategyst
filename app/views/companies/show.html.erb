@@ -1,60 +1,133 @@
 <p id="notice"><%= notice %></p>
-
+<%= image_tag @company.logo, class: "thumbnail pull-right" %>
 <h1><%= link_to @company.name, @company.website %></h1>
-<%= image_tag @company.logo, class: "logo-image pull-right" %>
+<p>
+  <strong><%= simple_format @company.pitch %></strong>
+</p>
 <address>
-<%= @company.address %>
+<%= simple_format @company.address %>
 </address>
 
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-camera-retro" aria-hidden="true"></i> Context</h3>
+      </div>
+      <div class="panel-body">
+        <%= simple_format @company.context %>
+      </div>
+    </div>    
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-crosshairs" aria-hidden="true"></i> Goal</h3>
+      </div>
+      <div class="panel-body">
+        <%= simple_format @company.goal %>
+      </div>  
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="well">
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+        <h4>Mission</h4>
+        <%= simple_format @company.mission %>
+      </p>
+    </div>
+
+    <div class="col-md-4">
+      <p>
+        <h4>Vision</h4>
+        <%= simple_format @company.vision %>
+      </p>
+    </div>
+
+    <div class="col-md-4">
+      <p>
+        <h4>Values</h4>
+        <%= simple_format @company.values %>
+      </p>
+    </div>        
+  </div>
+
+</div>
+
+<button type="button" class="btn btn-default"><%= link_to 'Edit', edit_company_path(@company) %></button>  
+<div class="btn-group" role="group" aria-label="...">
+  <button type="button" class="btn btn-default"><%= link_to "Add POC", new_company_poc_path(@company) %></button>
+  <button type="button" class="btn btn-default"><%= link_to "Add Value Proposition", new_company_value_proposition_path(@company) %></button>
+  <button type="button" class="btn btn-default"><%= link_to "Add Market Segment", new_company_segment_path(@company) %></button>
+</div>
 <p>
-  <h4>Pitch:</h4>
-  <%= @company.pitch %>
+  
 </p>
 
-<p>
-  <h4>Context:</h4>
-  <%= @company.context %>
-</p>
-
-<p>
-  <h4>Goal:</h4>
-  <%= @company.goal %>
-</p>
-
-<p>
-  <h4>Mission:</h4>
-  <%= @company.mission %>
-</p>
-
-<p>
-  <h4>Vision:</h4>
-  <%= @company.vision %>
-</p>
-
-<p>
-  <h4>Values:</h4>
-  <%= @company.values %>
-</p>
-
-<p>
-  <%= link_to "Add POC", new_company_poc_path(@company), class: "btn btn-default" %>
-</p>
-
+<hr>
 <h3>Points of Contact</h3>
 <div class="row">
   <% @company.pocs.each do |poc| %>
-    <div class="col-sm-6 col-md-4">
+    <div class="col-md-4">
       <div class="thumbnail">
         <a href="<%= poc.linkedin %>"><img src="<%= poc.img %>" alt="<%= poc.name %>"></a>
         <div class="caption">
           <h3><%= poc.name %></h3>
           <p><span class="label label-info"><%= poc.title %></span> acting as POC <span class="label label-info"><%= poc.role %></span></p>
+          <p><i class="fa fa-phone" aria-hidden="true"></i> <%= poc.telephone %><br>
+            <i class="fa fa-envelope" aria-hidden="true"></i> <%= poc.email %>
+          </p>
 <!--           <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
+          <div class="btn-group btn-group-sm" role="group" aria-label="...">
+            <button type="button" class="btn btn-default">
+              <a href="<%= poc.twitter %>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </button>
+            <button type="button" class="btn btn-default">
+              <a href="<%= poc.linkedin %>"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            </button>            
+          </div>
+          <%= link_to "edit", edit_poc_path(poc), class: "btn btn-sm btn-default pull-right" %>
         </div>
       </div>
     </div>
   <% end %>
 </div>
+
+<h3>Value Propositions</h3>
+<div class="row">
+  <% @company.value_propositions.each do |vp| %>
+    <div class="col-md-4">
+
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+          <h3 class="panel-title text-center"><%= vp.product_service %></h3>
+        </div>
+
+        <!-- List group -->
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Price:</strong> <%= vp.price %></li>
+          <li class="list-group-item"><strong>Promotion:</strong><br> <%= vp.promotion %></li>
+          <li class="list-group-item"><strong>Place:</strong><br> <%= vp.place %></li>
+          <li class="list-group-item"><strong>Differentiation:</strong><br> <%= vp.differentiation %></li>
+          <li class="list-group-item"><strong>Gain Creator:</strong><br> <%= vp.gain_creator %></li>
+          <li class="list-group-item"><strong>Pain Reliever:</strong><br> <%= vp.pain_reliever %></li>
+        </ul>
+
+        <div class="panel-body">
+          <%= link_to "Edit", edit_value_proposition_path(vp), class: "btn btn-sm btn-default pull-right" %>
+        </div>
+      </div>
+
+    </div> <!-- close col-md-4 -->
+  <% end %>
+</div>   <!-- close row -->
 
 <ul class="pager">
   <li><%= link_to 'Edit', edit_company_path(@company) %></li>

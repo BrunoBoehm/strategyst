@@ -22,7 +22,7 @@
 
 <p>
   <strong>Company:</strong>
-  <%= @segment.company %>
+  <%= link_to @segment.company.name, @segment.company %>
 </p>
 
 <%= link_to 'Edit', edit_segment_path(@segment) %> |
