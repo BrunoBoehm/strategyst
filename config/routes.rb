@@ -2,8 +2,12 @@ Rails.application.routes.draw do
   resources :personas
   resources :tactics
   resources :pocs
-  resources :strategies
-  resources :objectives
+  resources :strategies do |variable|
+    resources :tactics, only: [:new]
+  end
+  resources :objectives do
+    resources :strategies, only: [:new]
+  end
   resources :value_propositions do
     resources :personas, only: [:new]
   end

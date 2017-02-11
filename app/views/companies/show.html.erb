@@ -214,8 +214,8 @@
 
         <!-- List group -->
         <ul class="list-group">
-          <li class="list-group-item"><strong>Segment:</strong> <%= link_to objective.segment.name, objective.segment %></li>
-          <li class="list-group-item"><strong>Personas:</strong> <br>
+          <li class="list-group-item"><strong>Segment</strong> <%= link_to objective.segment.name, objective.segment %></li>
+          <li class="list-group-item"><strong>Personas</strong> <br>
             <ul>
               <% objective.segment.personas.each do |persona| %>
                 <li><%= link_to persona.name, persona %><br>
@@ -224,13 +224,67 @@
               <% end %>
             </ul>
           </li>
-          <li class="list-group-item"><strong>KPI:</strong><br> <%= objective.measurable %></li>
-          <li class="list-group-item"><strong>Achievable?:</strong><br> <%= simple_format objective.achievable %></li>
-          <li class="list-group-item"><strong>Realism:</strong><br> <%= simple_format objective.realistic %></li>
+          <li class="list-group-item"><strong>KPI</strong><br> <%= objective.measurable %></li>
+          <li class="list-group-item"><strong>Achievable?</strong><br> <%= simple_format objective.achievable %></li>
+          <li class="list-group-item"><strong>Realism</strong><br> <%= simple_format objective.realistic %></li>
+          <li class="list-group-item"><strong>Strategies</strong> <br>
+            <ul>
+              <% objective.strategies.each do |strategy| %>
+                <li><%= link_to strategy.pitch, strategy %></li>
+              <% end %>
+            </ul>
+          </li>          
         </ul>
 
         <div class="panel-body">
-          <%= link_to "Edit", edit_objective_path(objective), class: "btn btn-sm btn-default pull-right" %>
+
+
+          <div class="btn-group pull-right" role="group" aria-label="...">
+            <%= link_to "Add Strategy", new_objective_strategy_path(objective), class: "btn btn-sm btn-default" %>
+            <%= link_to "Edit", edit_objective_path(objective), class: "btn btn-sm btn-default" %>
+          </div>
+          
+        </div>
+      </div>
+
+    </div> <!-- close col-md-4 -->
+  <% end %>
+</div>   <!-- close row -->
+
+<hr>
+<h3>Strategies <span class="badge"><%= @strategies.count %></span></h3>
+<div class="row">
+  <% @strategies.each do |strategy| %>
+    <div class="col-md-4">
+
+      <div class="panel panel-danger">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+          <h3 class="panel-title text-center"><%= strategy.pitch %></h3>
+        </div>
+
+        <!-- List group -->
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Objective</strong><br> <%= link_to strategy.objective.specific, strategy.objective %></li>
+          <li class="list-group-item"><strong>Description</strong><br> <%= simple_format strategy.description %></li>
+          <li class="list-group-item"><strong>KSF</strong><br> <%= simple_format strategy.ksf %></li>
+          <li class="list-group-item"><strong>Tactics</strong> <br>
+            <ul>
+              <% strategy.tactics.each do |tactic| %>
+                <li><%= link_to tactic.pitch, tactic %></li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="panel-body">
+
+
+          <div class="btn-group pull-right" role="group" aria-label="...">
+            <%= link_to "Add Strategy", new_strategy_tactic_path(strategy), class: "btn btn-sm btn-default" %>
+            <%= link_to "Edit", edit_strategy_path(strategy), class: "btn btn-sm btn-default" %>
+          </div>
+          
         </div>
       </div>
 

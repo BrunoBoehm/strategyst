@@ -12,6 +12,7 @@ class CompaniesController < ApplicationController
   def show
     @segments = @company.segments
     @objectives = @segments.map(&:objectives).flatten
+    @strategies = @objectives.map(&:strategies).flatten
     @personas = @segments.map(&:personas).flatten
   end
 
