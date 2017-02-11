@@ -83,7 +83,6 @@
           <p><i class="fa fa-phone" aria-hidden="true"></i> <%= poc.telephone %><br>
             <i class="fa fa-envelope" aria-hidden="true"></i> <%= poc.email %>
           </p>
-<!--           <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
           <div class="btn-group btn-group-sm" role="group" aria-label="...">
             <button type="button" class="btn btn-default">
               <a href="<%= poc.twitter %>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
@@ -99,6 +98,7 @@
   <% end %>
 </div>
 
+<hr>
 <h3>Segments <span class="badge"><%= @company.segments.count %></span></h3>
 <div class="row">
   <% @company.segments.each do |segment| %>
@@ -146,7 +146,7 @@
   <% end %>
 </div>   <!-- close row -->
 
-
+<hr>
 <h3>Value Propositions <span class="badge"><%= @company.value_propositions.count %></span></h3>
 <div class="row">
   <% @company.value_propositions.each do |vp| %>
@@ -170,6 +170,62 @@
 
         <div class="panel-body">
           <%= link_to "Edit", edit_value_proposition_path(vp), class: "btn btn-sm btn-default pull-right" %>
+        </div>
+      </div>
+
+    </div> <!-- close col-md-4 -->
+  <% end %>
+</div>   <!-- close row -->
+
+<hr>
+<h3>Personas <span class="badge"><%= @company.pocs.count %></span></h3>
+<div class="row">
+  <% @personas.each do |persona| %>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <img src="<%= persona.img %>" alt="<%= persona.name %>">
+        <div class="caption">
+          <h3><%= persona.name %></h3>
+          <p><span class="label label-info"><%= persona.segment.name %></span> / <span class="label label-info"><%= persona.role %></span></p>
+          <%= link_to "edit", edit_persona_path(persona), class: "btn btn-sm btn-default pull-right" %>
+          <p class="clearfix"></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<hr>
+<h3>Objectives <span class="badge"><%= @objectives.count %></span></h3>
+<div class="row">
+  <% @objectives.each do |objective| %>
+    <div class="col-md-4">
+
+      <div class="panel panel-success">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+          <h3 class="panel-title text-center"><%= objective.specific %></h3>
+        </div>
+
+        <!-- List group -->
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Segment:</strong> <%= link_to objective.segment.name, objective.segment %></li>
+          <li class="list-group-item"><strong>Personas:</strong> <br>
+            <ul>
+              <% objective.segment.personas.each do |persona| %>
+                <li><%= link_to persona.name, persona %><br>
+                    (<%= persona.role %>)
+                </li>
+              <% end %>
+            </ul>
+          </li>
+          <li class="list-group-item"><strong>KPI:</strong><br> <%= objective.measurable %></li>
+          <li class="list-group-item"><strong>Achievable?:</strong><br> <%= simple_format objective.achievable %></li>
+          <li class="list-group-item"><strong>Realism:</strong><br> <%= simple_format objective.realistic %></li>
+        </ul>
+
+        <div class="panel-body">
+          <%= link_to "Edit", edit_objective_path(objective), class: "btn btn-sm btn-default pull-right" %>
         </div>
       </div>
 

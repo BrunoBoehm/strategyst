@@ -10,6 +10,9 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
+    @segments = @company.segments
+    @objectives = @segments.map(&:objectives).flatten
+    @personas = @segments.map(&:personas).flatten
   end
 
   # GET /companies/new
