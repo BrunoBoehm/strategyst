@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  resources :personas
+  resources :tactics
+  resources :pocs
+  resources :pocs
+  resources :strategies
+  resources :objectives
+  resources :value_propositions
+  resources :segments
+  resources :companies
   get 'static_pages/dashboard'
 
   get 'static_pages/frontpage'

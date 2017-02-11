@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pitch:</strong>
+  <%= @strategy.pitch %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @strategy.description %>
+</p>
+
+<p>
+  <strong>Ksf:</strong>
+  <%= @strategy.ksf %>
+</p>
+
+<p>
+  <strong>Objective:</strong>
+  <%= @strategy.objective %>
+</p>
+
+<%= link_to 'Edit', edit_strategy_path(@strategy) %> |
+<%= link_to 'Back', strategies_path %>

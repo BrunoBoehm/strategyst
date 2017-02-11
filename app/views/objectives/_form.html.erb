@@ -1,0 +1,41 @@
+<%= form_for(@objective) do |f| %>
+  <% if @objective.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@objective.errors.count, "error") %> prohibited this objective from being saved:</h2>
+
+      <ul>
+      <% @objective.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :specific %><br>
+    <%= f.text_area :specific %>
+  </div>
+  <div class="field">
+    <%= f.label :measurable %><br>
+    <%= f.text_area :measurable %>
+  </div>
+  <div class="field">
+    <%= f.label :achievable %><br>
+    <%= f.text_area :achievable %>
+  </div>
+  <div class="field">
+    <%= f.label :realistic %><br>
+    <%= f.text_area :realistic %>
+  </div>
+  <div class="field">
+    <%= f.label :timed %><br>
+    <%= f.datetime_select :timed %>
+  </div>
+  <div class="field">
+    <%= f.label :segment_id %><br>
+    <%= f.text_field :segment_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

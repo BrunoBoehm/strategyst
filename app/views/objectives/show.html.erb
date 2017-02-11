@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Specific:</strong>
+  <%= @objective.specific %>
+</p>
+
+<p>
+  <strong>Measurable:</strong>
+  <%= @objective.measurable %>
+</p>
+
+<p>
+  <strong>Achievable:</strong>
+  <%= @objective.achievable %>
+</p>
+
+<p>
+  <strong>Realistic:</strong>
+  <%= @objective.realistic %>
+</p>
+
+<p>
+  <strong>Timed:</strong>
+  <%= @objective.timed %>
+</p>
+
+<p>
+  <strong>Segment:</strong>
+  <%= @objective.segment %>
+</p>
+
+<%= link_to 'Edit', edit_objective_path(@objective) %> |
+<%= link_to 'Back', objectives_path %>

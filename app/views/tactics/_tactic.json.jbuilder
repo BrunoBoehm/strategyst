@@ -1,0 +1,2 @@
+json.extract! tactic, :id, :pitch, :description, :medium, :importance, :frequency, :start, :end, :kpi, :budget, :strategy_id, :poc_id, :created_at, :updated_at
+json.url tactic_url(tactic, format: :json)

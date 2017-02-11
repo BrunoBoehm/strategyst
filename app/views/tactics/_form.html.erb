@@ -1,0 +1,61 @@
+<%= form_for(@tactic) do |f| %>
+  <% if @tactic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tactic.errors.count, "error") %> prohibited this tactic from being saved:</h2>
+
+      <ul>
+      <% @tactic.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :pitch %><br>
+    <%= f.text_field :pitch %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :medium %><br>
+    <%= f.text_field :medium %>
+  </div>
+  <div class="field">
+    <%= f.label :importance %><br>
+    <%= f.number_field :importance %>
+  </div>
+  <div class="field">
+    <%= f.label :frequency %><br>
+    <%= f.text_field :frequency %>
+  </div>
+  <div class="field">
+    <%= f.label :start %><br>
+    <%= f.datetime_select :start %>
+  </div>
+  <div class="field">
+    <%= f.label :end %><br>
+    <%= f.datetime_select :end %>
+  </div>
+  <div class="field">
+    <%= f.label :kpi %><br>
+    <%= f.text_field :kpi %>
+  </div>
+  <div class="field">
+    <%= f.label :budget %><br>
+    <%= f.number_field :budget %>
+  </div>
+  <div class="field">
+    <%= f.label :strategy_id %><br>
+    <%= f.text_field :strategy_id %>
+  </div>
+  <div class="field">
+    <%= f.label :poc_id %><br>
+    <%= f.text_field :poc_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

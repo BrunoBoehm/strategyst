@@ -1,0 +1,1 @@
+json.array! @value_propositions, partial: 'value_propositions/value_proposition', as: :value_proposition
