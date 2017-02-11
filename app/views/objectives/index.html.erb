@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Objectives</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Specific</th>
+      <th>Measurable</th>
+      <th>Achievable</th>
+      <th>Realistic</th>
+      <th>Timed</th>
+      <th>Belongs to</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @objectives.each do |objective| %>
+      <tr>
+        <td><%= objective.specific %></td>
+        <td><%= objective.measurable %></td>
+        <td><%= objective.achievable %></td>
+        <td><%= objective.realistic %></td>
+        <td><%= objective.timed %></td>
+        <td><%= objective.belongs_to %></td>
+        <td><%= link_to 'Show', objective %></td>
+        <td><%= link_to 'Edit', edit_objective_path(objective) %></td>
+        <td><%= link_to 'Destroy', objective, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Objective', new_objective_path %>

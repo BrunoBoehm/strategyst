@@ -1,0 +1,77 @@
+<%= form_for(@persona) do |f| %>
+  <% if @persona.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@persona.errors.count, "error") %> prohibited this persona from being saved:</h2>
+
+      <ul>
+      <% @persona.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :img %><br>
+    <%= f.text_field :img %>
+  </div>
+  <div class="field">
+    <%= f.label :role %><br>
+    <%= f.text_field :role %>
+  </div>
+  <div class="field">
+    <%= f.label :jobs %><br>
+    <%= f.text_area :jobs %>
+  </div>
+  <div class="field">
+    <%= f.label :pains %><br>
+    <%= f.text_area :pains %>
+  </div>
+  <div class="field">
+    <%= f.label :gains %><br>
+    <%= f.text_area :gains %>
+  </div>
+  <div class="field">
+    <%= f.label :touch_points %><br>
+    <%= f.text_area :touch_points %>
+  </div>
+  <div class="field">
+    <%= f.label :quotes %><br>
+    <%= f.text_area :quotes %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br>
+    <%= f.number_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :income %><br>
+    <%= f.number_field :income %>
+  </div>
+  <div class="field">
+    <%= f.label :education %><br>
+    <%= f.number_field :education %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :story %><br>
+    <%= f.text_area :story %>
+  </div>
+  <div class="field">
+    <%= f.label :belongs_to %><br>
+    <%= f.text_field :belongs_to %>
+  </div>
+  <div class="field">
+    <%= f.label :belongs_to %><br>
+    <%= f.text_field :belongs_to %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
