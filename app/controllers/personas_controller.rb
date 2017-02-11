@@ -14,7 +14,13 @@ class PersonasController < ApplicationController
 
   # GET /personas/new
   def new
-    @persona = Persona.new
+    if params[:value_proposition_id]
+      @persona = Persona.new(value_proposition_id: params[:value_proposition_id])
+    elsif params[:segment_id]
+      @persona = Persona.new(segment_id: params[:segment_id])
+    else  
+      @persona = Persona.new
+    end
   end
 
   # GET /personas/1/edit

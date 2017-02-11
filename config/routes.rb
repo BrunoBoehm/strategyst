@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   resources :strategies
   resources :objectives
   resources :value_propositions
-  resources :segments
+  resources :segments do
+    resources :personas, only: [:new]
+    resources :objectives, only: [:new]
+  end
   resources :companies do
     resources :pocs, only: [:new]
     resources :value_propositions, only: [:new]

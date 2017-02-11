@@ -11,31 +11,42 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :specific %><br>
-    <%= f.text_area :specific %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="well">
+      
+      <div class="input-group">
+        <%= f.label :specific, class: "input-group-addon" %>
+        <%= f.text_area :specific, class: "form-control", rows: 4 %>
+      </div>
+      <div class="input-group">
+        <%= f.label :measurable, class: "input-group-addon" %>
+        <%= f.text_area :measurable, class: "form-control", rows: 4 %>
+      </div>
+      <div class="input-group">
+        <%= f.label :achievable, class: "input-group-addon" %>
+        <%= f.text_area :achievable, class: "form-control", rows: 4 %>
+      </div>
+      <div class="input-group">
+        <%= f.label :realistic, class: "input-group-addon" %>
+        <%= f.text_area :realistic, class: "form-control", rows: 4 %>
+      </div>
+      <div class="input-group">
+        <%= f.label :timed %>
+        <%= f.date_select :timed, class: "form-control" %>
+      </div>
+      <div class="input-group">
+        <%= f.label :segment_id %>
+        <%= f.collection_select :segment_id, Segment.order(:name), :id, :name, include_blank: "Nothing selected" %>
+      </div>
+
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :measurable %><br>
-    <%= f.text_area :measurable %>
-  </div>
-  <div class="field">
-    <%= f.label :achievable %><br>
-    <%= f.text_area :achievable %>
-  </div>
-  <div class="field">
-    <%= f.label :realistic %><br>
-    <%= f.text_area :realistic %>
-  </div>
-  <div class="field">
-    <%= f.label :timed %><br>
-    <%= f.datetime_select :timed %>
-  </div>
-  <div class="field">
-    <%= f.label :segment_id %><br>
-    <%= f.text_field :segment_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+</div>
+
+
+
+  <div class="actions text-center">
+    <%= f.submit class: "btn btn-success" %>
   </div>
 <% end %>

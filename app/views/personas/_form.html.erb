@@ -11,67 +11,110 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+
+<h3 class="text-center">Profiling</h3>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="well">
+      
+      <div class="input-group">
+        <%= f.label :name, class: "input-group-addon" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="input-group">
+        <%= f.label :img, class: "input-group-addon" %>
+        <%= f.text_field :img, class: "form-control" %>
+      </div>
+      <div class="input-group">
+        <%= f.label :role, class: "input-group-addon" %>
+        <%= f.text_field :role, class: "form-control" %>
+      </div>
+
+      <div class="input-group">
+        <%= f.label :touch_points, class: "input-group-addon" %>
+        <%= f.text_area :touch_points, class: "form-control" %>
+      </div>
+
+      <div class="input-group">
+        <%= f.label :story, class: "input-group-addon" %>
+        <%= f.text_area :story, class: "form-control" %>
+      </div>
+
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :img %><br>
-    <%= f.text_field :img %>
+</div>  
+
+<h3 class="text-center">Jobs, Pains, Gains</h3>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="well">
+      
+      <div class="input-group">
+        <%= f.label :jobs, class: "input-group-addon" %>
+        <%= f.text_area :jobs, class: "form-control" %>
+      </div>
+      <div class="input-group">
+        <%= f.label :pains, class: "input-group-addon" %>
+        <%= f.text_area :pains, class: "form-control" %>
+      </div>
+      <div class="input-group">
+        <%= f.label :gains, class: "input-group-addon" %>
+        <%= f.text_area :gains, class: "form-control" %>
+      </div>
+      <div class="input-group">
+        <%= f.label :quotes, class: "input-group-addon" %>
+        <%= f.text_area :quotes, class: "form-control" %>
+      </div>
+
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :role %><br>
-    <%= f.text_field :role %>
+</div>  
+
+<h3 class="text-center">Socio-Demographics</h3>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="well">
+          
+      <div class="input-group">
+        <%= f.label :age %>
+        <%= f.select :age, options_for_select(Persona.ages.collect { |s| [s[0].humanize, s[0]] }) %>
+      </div>
+      <div class="input-group">
+        <%= f.label :income, "Yearly Personal Income" %>
+        <%= f.select :income, options_for_select(Persona.incomes.collect { |s| [s[0].humanize, s[0]] }) %>
+      </div>
+      <div class="input-group">
+        <%= f.label :education %>
+        <%= f.select :education, options_for_select(Persona.educations.collect { |s| [s[0].humanize, s[0]] }) %>
+      </div>
+      <div class="input-group">
+        <%= f.label :location, class: "input-group-addon" %>
+        <%= f.text_field :location, class: "form-control" %>
+      </div>
+
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :jobs %><br>
-    <%= f.text_area :jobs %>
+</div>  
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="well">
+
+      <div class="input-group">
+        <%= f.label :value_proposition_id %>
+        <%= f.collection_select :value_proposition_id, ValueProposition.order(:product_service), :id, :product_service, include_blank: "Nothing selected" %>
+      </div>
+      <div class="input-group">
+        <%= f.label :segment_id %>
+        <%= f.collection_select :segment_id, Segment.order(:name), :id, :name, include_blank: "Nothing selected" %>
+      </div>
+
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :pains %><br>
-    <%= f.text_area :pains %>
+</div> 
+
+  <div class="actions text-center">
+    <%= f.submit class: "btn btn-success" %>
   </div>
-  <div class="field">
-    <%= f.label :gains %><br>
-    <%= f.text_area :gains %>
-  </div>
-  <div class="field">
-    <%= f.label :touch_points %><br>
-    <%= f.text_area :touch_points %>
-  </div>
-  <div class="field">
-    <%= f.label :quotes %><br>
-    <%= f.text_area :quotes %>
-  </div>
-  <div class="field">
-    <%= f.label :age %><br>
-    <%= f.number_field :age %>
-  </div>
-  <div class="field">
-    <%= f.label :income %><br>
-    <%= f.number_field :income %>
-  </div>
-  <div class="field">
-    <%= f.label :education %><br>
-    <%= f.number_field :education %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :story %><br>
-    <%= f.text_area :story %>
-  </div>
-  <div class="field">
-    <%= f.label :value_proposition_id %><br>
-    <%= f.text_field :value_proposition_id %>
-  </div>
-  <div class="field">
-    <%= f.label :segment_id %><br>
-    <%= f.text_field :segment_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>
