@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   if Rails.env.production?
-    devise_for :users, controllers: { sessions: 'users/registrations' }
+    devise_for :users, controllers: { registrations: 'users/registrations' }
   else
     devise_for :users
   end
