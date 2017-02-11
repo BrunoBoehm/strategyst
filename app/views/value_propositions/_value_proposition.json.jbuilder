@@ -1,2 +1,0 @@
-json.extract! value_proposition, :id, :product_service, :price, :promotion, :place, :gain_creator, :pain_reliever, :differentiation, :belongs_to, :created_at, :updated_at
-json.url value_proposition_url(value_proposition, format: :json)

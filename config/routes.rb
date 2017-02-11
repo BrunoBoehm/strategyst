@@ -3,15 +3,6 @@ Rails.application.routes.draw do
 
   get 'static_pages/frontpage'
 
-  resources :pocs
-  resources :tactics
-  resources :strategies
-  resources :objectives
-  resources :clients
-  resources :value_propositions
-  resources :personas
-  resources :segments
-  resources :companies
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

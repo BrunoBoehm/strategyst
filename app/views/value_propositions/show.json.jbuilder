@@ -1,1 +1,0 @@
-json.partial! "value_propositions/value_proposition", value_proposition: @value_proposition
