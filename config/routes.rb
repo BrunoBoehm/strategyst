@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
+
+  if Rails.env.production?
+    devise_for :users, controllers: { sessions: 'users/registrations' }
+  else
+    devise_for :users
+  end
+
   resources :personas
   resources :tactics
   resources :pocs
