@@ -14,7 +14,12 @@ class PocsController < ApplicationController
 
   # GET /pocs/new
   def new
-    @poc = Poc.new
+    if params[:company_id]
+      @company = Company.find(params[:company_id])
+      @poc = Poc.new(company_id: @company.id)
+    else
+      @poc = Poc.new
+    end
   end
 
   # GET /pocs/1/edit

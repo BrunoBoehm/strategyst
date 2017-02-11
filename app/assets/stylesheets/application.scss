@@ -1,6 +1,8 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 .navbar .container {
 	margin-top: 0;
@@ -8,4 +10,8 @@
 
 .container {
 	margin-top: 70px;
+}
+
+.input-group {
+	margin: 20px 0;
 }

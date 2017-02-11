@@ -2,12 +2,13 @@ Rails.application.routes.draw do
   resources :personas
   resources :tactics
   resources :pocs
-  resources :pocs
   resources :strategies
   resources :objectives
   resources :value_propositions
   resources :segments
-  resources :companies
+  resources :companies do
+    resources :pocs, only: [:new]
+  end
   get 'static_pages/dashboard'
 
   root 'static_pages#frontpage'

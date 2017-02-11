@@ -1,54 +1,63 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @company.name %>
-</p>
+<h1><%= link_to @company.name, @company.website %></h1>
+<%= image_tag @company.logo, class: "logo-image pull-right" %>
+<address>
+<%= @company.address %>
+</address>
 
 <p>
-  <strong>Pitch:</strong>
+  <h4>Pitch:</h4>
   <%= @company.pitch %>
 </p>
 
 <p>
-  <strong>Context:</strong>
+  <h4>Context:</h4>
   <%= @company.context %>
 </p>
 
 <p>
-  <strong>Goal:</strong>
+  <h4>Goal:</h4>
   <%= @company.goal %>
 </p>
 
 <p>
-  <strong>Mission:</strong>
+  <h4>Mission:</h4>
   <%= @company.mission %>
 </p>
 
 <p>
-  <strong>Vision:</strong>
+  <h4>Vision:</h4>
   <%= @company.vision %>
 </p>
 
 <p>
-  <strong>Values:</strong>
+  <h4>Values:</h4>
   <%= @company.values %>
 </p>
 
 <p>
-  <strong>Logo:</strong>
-  <%= @company.logo %>
+  <%= link_to "Add POC", new_company_poc_path(@company), class: "btn btn-default" %>
 </p>
 
-<p>
-  <strong>Website:</strong>
-  <%= @company.website %>
-</p>
+<h3>Points of Contact</h3>
+<div class="row">
+  <% @company.pocs.each do |poc| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <a href="<%= poc.linkedin %>"><img src="<%= poc.img %>" alt="<%= poc.name %>"></a>
+        <div class="caption">
+          <h3><%= poc.name %></h3>
+          <p><span class="label label-info"><%= poc.title %></span> acting as POC <span class="label label-info"><%= poc.role %></span></p>
+<!--           <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<p>
-  <strong>Address:</strong>
-  <%= @company.address %>
-</p>
+<ul class="pager">
+  <li><%= link_to 'Edit', edit_company_path(@company) %></li>
+  <li><%= link_to 'Back', companies_path %></li>
+</ul>
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
