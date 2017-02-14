@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :pocs, only: [:new]
     resources :value_propositions, only: [:new]
     resources :segments, only: [:new]
+    resources :objectives, only: [:new]
   end
   get 'static_pages/dashboard'
 

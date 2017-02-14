@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170211185706) do
+ActiveRecord::Schema.define(version: 20170214085302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170211185706) do
     t.integer  "segment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "title"
   end
 
   add_index "objectives", ["segment_id"], name: "index_objectives_on_segment_id", using: :btree
@@ -155,6 +156,7 @@ ActiveRecord::Schema.define(version: 20170211185706) do
     t.integer  "company_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "name"
   end
 
   add_index "value_propositions", ["company_id"], name: "index_value_propositions_on_company_id", using: :btree

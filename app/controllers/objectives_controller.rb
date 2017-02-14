@@ -29,7 +29,7 @@ class ObjectivesController < ApplicationController
     respond_to do |format|
       if @objective.save
         format.html { redirect_to @objective, notice: 'Objective was successfully created.' }
-        format.json { render :show, status: :created, location: @objective }
+        format.json { render :show, status: :created, location: @objective }          
       else
         format.html { render :new }
         format.json { render json: @objective.errors, status: :unprocessable_entity }
@@ -69,6 +69,6 @@ class ObjectivesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def objective_params
-      params.require(:objective).permit(:specific, :measurable, :achievable, :realistic, :timed, :segment_id)
+      params.require(:objective).permit(:title, :specific, :measurable, :achievable, :realistic, :timed, :segment_id)
     end
 end

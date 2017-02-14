@@ -74,6 +74,6 @@ class ValuePropositionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def value_proposition_params
-      params.require(:value_proposition).permit(:product_service, :price, :promotion, :place, :gain_creator, :pain_reliever, :differentiation, :company_id)
+      params.require(:value_proposition).permit(:name, :product_service, :price, :promotion, :place, :gain_creator, :pain_reliever, :differentiation, :company_id)
     end
 end
