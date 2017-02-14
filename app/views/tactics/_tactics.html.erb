@@ -1,0 +1,35 @@
+<div class="row">
+  <% tactics.each do |tactic| %>
+    <div class="col-md-4">
+
+      <div class="panel panel-danger">
+        <!-- Default panel contents -->
+        <div class="panel-heading animate">
+          <h3 class="panel-title text-center"><%= tactic.pitch %></h3>
+        </div>
+
+        <!-- List group -->
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Strategy</strong><br> <%= link_to tactic.strategy.pitch, tactic.strategy %></li>
+          <li class="list-group-item"><strong>Plan</strong><br>
+            €<%= tactic.budget %><br>
+            <%= tactic.frequency %><br>from <%= tactic.start.strftime("%a %-d, %b %Y") %> to <%= tactic.end.strftime("%a %-d, %b %Y") %>
+          </li>
+          <li class="list-group-item"><strong>Description</strong><br> <%= simple_format tactic.description %></li>
+          <li class="list-group-item"><strong>Medium</strong><br> <%= simple_format tactic.medium %></li>
+          <li class="list-group-item"><strong>Key Performance Indicator</strong><br> <%= simple_format tactic.kpi %></li>
+          <li class="list-group-item"><strong>POC</strong><br> <%= link_to tactic.poc.name, tactic.poc %></li>
+        </ul>
+
+        <div class="panel-body">
+
+          <div class="btn-group pull-right" role="group" aria-label="...">
+            <%= link_to "Edit", edit_tactic_path(tactic), class: "btn btn-sm btn-default" %>
+          </div>
+          
+        </div>
+      </div>
+
+    </div> <!-- close col-md-4 -->
+  <% end %>
+</div>   <!-- close row -->

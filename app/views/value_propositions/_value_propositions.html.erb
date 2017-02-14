@@ -1,0 +1,33 @@
+<div class="row">
+  <% value_propositions.each do |vp| %>
+    <div class="col-md-4">
+
+      <div class="panel panel-success">
+        <!-- Default panel contents -->
+        <div class="panel-heading animate">
+          <h3 class="panel-title text-center"><%= vp.product_service %></h3>
+        </div>
+
+        <!-- List group -->
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Price:</strong> <%= vp.price %></li>
+          <li class="list-group-item"><strong>Promotion:</strong><br> <%= simple_format vp.promotion %></li>
+          <li class="list-group-item"><strong>Place:</strong><br> <%= simple_format vp.place %></li>
+          <li class="list-group-item"><strong>Differentiation:</strong><br> <%= simple_format vp.differentiation %></li>
+          <li class="list-group-item"><strong>Gain Creator:</strong><br> <%= simple_format vp.gain_creator %></li>
+          <li class="list-group-item"><strong>Pain Reliever:</strong><br> <%= simple_format vp.pain_reliever %></li>
+        </ul>
+
+        <div class="panel-body">
+
+          <div class="btn-group pull-right" role="group" aria-label="...">
+            <%= link_to "Add Persona", new_value_proposition_persona_path(vp), class: "btn btn-sm btn-default" %>
+            <%= link_to "Edit", edit_value_proposition_path(vp), class: "btn btn-sm btn-default pull-right" %>
+          </div>
+
+        </div>
+      </div>
+
+    </div> <!-- close col-md-4 -->
+  <% end %>
+</div>   <!-- close row -->

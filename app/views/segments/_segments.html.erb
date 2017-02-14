@@ -1,0 +1,56 @@
+<div class="row">
+  <% segments.each do |segment| %>
+    <div class="col-md-4">
+
+      <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading animate">
+          <h3 class="panel-title text-center"><%= segment.name %></h3>
+        </div>
+        
+        <!-- List group -->
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Description</strong><br> <%= segment.description %></li>
+          <li class="list-group-item"><strong>Size</strong><br> <%= segment.size %></li>
+          <li class="list-group-item"><strong>Growth</strong><br> <%= segment.growth %></li>
+          <li class="list-group-item">
+            <strong>Personas</strong><br>
+            <%= render partial: 'personas/personas', locals: {personas: segment.personas} %>
+<!--             <ul>
+              <% segment.personas.each do |persona| %>
+                <li><%= link_to persona.name, persona %>
+                	<% unless persona.role.blank? %>
+                	<br>(<%= persona.role %>)
+                	<% end %>
+                </li>
+              <% end %>
+            </ul> -->
+          </li>
+          <li class="list-group-item">
+            <strong>Objectives</strong><br>
+<!--             <ul>
+              <% segment.objectives.each do |objective| %>
+                <li><%= link_to objective.specific, objective %>
+                	<% unless objective.measurable.blank? %>
+                	<br>(<%= objective.measurable %>)
+                	<% end %>
+                </li>
+              <% end %>
+            </ul> -->
+            <%= render partial: 'objectives/objectives', locals: {objectives: segment.objectives} %>
+          </li>          
+        </ul>
+
+        <div class="panel-body">
+          <div class="btn-group pull-right" role="group" aria-label="...">
+            <%= link_to "Add Persona", new_segment_persona_path(segment), class: "btn btn-sm btn-default" %>
+            <%= link_to "Add Objective", new_segment_objective_path(segment), class: "btn btn-sm btn-default" %>
+            <%= link_to "Edit", edit_segment_path(segment), class: "btn btn-sm btn-default" %>
+          </div>
+        </div>
+        
+      </div>
+
+    </div> <!-- close col-md-4 -->
+  <% end %>
+</div>   <!-- close row -->

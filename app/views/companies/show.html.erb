@@ -75,240 +75,27 @@
 
 <hr>
 <h3>Segments <span class="badge"><%= @company.segments.count %></span></h3>
-<div class="row">
-  <% @company.segments.each do |segment| %>
-    <div class="col-md-4">
-
-      <div class="panel panel-primary">
-        <!-- Default panel contents -->
-        <div class="panel-heading animate">
-          <h3 class="panel-title text-center"><%= segment.name %></h3>
-        </div>
-        
-        <!-- List group -->
-        <ul class="list-group">
-          <li class="list-group-item"><strong>Description</strong><br> <%= segment.description %></li>
-          <li class="list-group-item"><strong>Size</strong><br> <%= segment.size %></li>
-          <li class="list-group-item"><strong>Growth</strong><br> <%= segment.growth %></li>
-          <li class="list-group-item">
-            <strong>Personas</strong><br>
-            <ul>
-              <% segment.personas.each do |persona| %>
-                <li><%= link_to persona.name, persona %><br>(<%= persona.role %>)</li>
-              <% end %>
-            </ul>
-          </li>
-          <li class="list-group-item">
-            <strong>Objectives</strong><br>
-            <ul>
-              <% segment.objectives.each do |objective| %>
-                <li><%= link_to objective.specific, objective %><br>(<%= objective.measurable %>)</li>
-              <% end %>
-            </ul>
-          </li>          
-        </ul>
-
-        <div class="panel-body">
-          <div class="btn-group pull-right" role="group" aria-label="...">
-            <%= link_to "Add Persona", new_segment_persona_path(segment), class: "btn btn-sm btn-default" %>
-            <%= link_to "Add Objective", new_segment_objective_path(segment), class: "btn btn-sm btn-default" %>
-            <%= link_to "Edit", edit_segment_path(segment), class: "btn btn-sm btn-default" %>
-          </div>
-        </div>
-        
-      </div>
-
-    </div> <!-- close col-md-4 -->
-  <% end %>
-</div>   <!-- close row -->
+<%= render partial: 'segments/segments', locals: {segments: @company.segments} %>
 
 <hr>
 <h3>Value Propositions <span class="badge"><%= @company.value_propositions.count %></span></h3>
-<div class="row">
-  <% @company.value_propositions.each do |vp| %>
-    <div class="col-md-4">
-
-      <div class="panel panel-success">
-        <!-- Default panel contents -->
-        <div class="panel-heading animate">
-          <h3 class="panel-title text-center"><%= vp.product_service %></h3>
-        </div>
-
-        <!-- List group -->
-        <ul class="list-group">
-          <li class="list-group-item"><strong>Price:</strong> <%= vp.price %></li>
-          <li class="list-group-item"><strong>Promotion:</strong><br> <%= simple_format vp.promotion %></li>
-          <li class="list-group-item"><strong>Place:</strong><br> <%= simple_format vp.place %></li>
-          <li class="list-group-item"><strong>Differentiation:</strong><br> <%= simple_format vp.differentiation %></li>
-          <li class="list-group-item"><strong>Gain Creator:</strong><br> <%= simple_format vp.gain_creator %></li>
-          <li class="list-group-item"><strong>Pain Reliever:</strong><br> <%= simple_format vp.pain_reliever %></li>
-        </ul>
-
-        <div class="panel-body">
-
-          <div class="btn-group pull-right" role="group" aria-label="...">
-            <%= link_to "Add Persona", new_value_proposition_persona_path(vp), class: "btn btn-sm btn-default" %>
-            <%= link_to "Edit", edit_value_proposition_path(vp), class: "btn btn-sm btn-default pull-right" %>
-          </div>
-
-        </div>
-      </div>
-
-    </div> <!-- close col-md-4 -->
-  <% end %>
-</div>   <!-- close row -->
+<%= render partial: 'value_propositions/value_propositions', locals: {value_propositions: @company.value_propositions} %>
 
 <hr>
 <h3>Personas <span class="badge"><%= @personas.count %></span></h3>
-<div class="row">
-  <% @personas.each do |persona| %>
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <img src="<%= persona.img %>" alt="<%= persona.name %>" class="blurb-image">
-
-        <div class="caption">
-          <h3><%= persona.name %></h3>
-          <p><span class="label label-info"><%= persona.segment.name %></span> / <span class="label label-info"><%= persona.role %></span></p>
-          <%= link_to "edit", edit_persona_path(persona), class: "btn btn-sm btn-default pull-right" %>
-          <p class="clearfix"></p>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
+<%= render partial: 'personas/personas', locals: {personas: @personas} %>
 
 <hr>
 <h3>Objectives <span class="badge"><%= @objectives.count %></span></h3>
-<div class="row">
-  <% @objectives.each do |objective| %>
-    <div class="col-md-4">
-
-      <div class="panel panel-success">
-        <!-- Default panel contents -->
-        <div class="panel-heading animate">
-          <h3 class="panel-title text-center"><%= objective.specific %></h3>
-        </div>
-
-        <!-- List group -->
-        <ul class="list-group">
-          <li class="list-group-item"><strong>Segment</strong> <%= link_to objective.segment.name, objective.segment %></li>
-          <li class="list-group-item"><strong>Personas</strong> <br>
-            <ul>
-              <% objective.segment.personas.each do |persona| %>
-                <li><%= link_to persona.name, persona %><br>
-                    (<%= persona.role %>)
-                </li>
-              <% end %>
-            </ul>
-          </li>
-          <li class="list-group-item"><strong>KPI</strong><br> <%= objective.measurable %></li>
-          <li class="list-group-item"><strong>Achievable?</strong><br> <%= simple_format objective.achievable %></li>
-          <li class="list-group-item"><strong>Realism</strong><br> <%= simple_format objective.realistic %></li>
-          <li class="list-group-item"><strong>Strategies</strong> <br>
-            <ul>
-              <% objective.strategies.each do |strategy| %>
-                <li><%= link_to strategy.pitch, strategy %></li>
-              <% end %>
-            </ul>
-          </li>          
-        </ul>
-
-        <div class="panel-body">
-
-
-          <div class="btn-group pull-right" role="group" aria-label="...">
-            <%= link_to "Add Strategy", new_objective_strategy_path(objective), class: "btn btn-sm btn-default" %>
-            <%= link_to "Edit", edit_objective_path(objective), class: "btn btn-sm btn-default" %>
-          </div>
-          
-        </div>
-      </div>
-
-    </div> <!-- close col-md-4 -->
-  <% end %>
-</div>   <!-- close row -->
+<%= render partial: 'objectives/objectives', locals: {objectives: @objectives} %>
 
 <hr>
 <h3>Strategies <span class="badge"><%= @strategies.count %></span></h3>
-<div class="row">
-  <% @strategies.each do |strategy| %>
-    <div class="col-md-4">
-
-      <div class="panel panel-danger">
-        <!-- Default panel contents -->
-        <div class="panel-heading animate">
-          <h3 class="panel-title text-center"><%= strategy.pitch %></h3>
-        </div>
-
-        <!-- List group -->
-        <ul class="list-group">
-          <li class="list-group-item"><strong>Objective</strong><br> <%= link_to strategy.objective.specific, strategy.objective %></li>
-          <li class="list-group-item"><strong>Description</strong><br> <%= simple_format strategy.description %></li>
-          <li class="list-group-item"><strong>Key Success Factors</strong><br> <%= simple_format strategy.ksf %></li>
-          <li class="list-group-item"><strong>Tactics</strong> <br>
-            <ul>
-              <% strategy.tactics.each do |tactic| %>
-                <li><%= link_to tactic.pitch, tactic %> <br>
-                  (prio <%= tactic.importance %>)
-                </li>
-              <% end %>
-            </ul>
-          </li>
-        </ul>
-
-        <div class="panel-body">
-
-
-          <div class="btn-group pull-right" role="group" aria-label="...">
-            <%= link_to "Add Tactic", new_strategy_tactic_path(strategy), class: "btn btn-sm btn-default" %>
-            <%= link_to "Edit", edit_strategy_path(strategy), class: "btn btn-sm btn-default" %>
-          </div>
-          
-        </div>
-      </div>
-
-    </div> <!-- close col-md-4 -->
-  <% end %>
-</div>   <!-- close row -->
+<%= render partial: 'strategies/strategies', locals: {strategies: @strategies} %>
 
 <hr>
 <h3>Tactics <span class="badge"><%= @tactics.count %></span></h3>
-<div class="row">
-  <% @tactics.each do |tactic| %>
-    <div class="col-md-4">
-
-      <div class="panel panel-danger">
-        <!-- Default panel contents -->
-        <div class="panel-heading animate">
-          <h3 class="panel-title text-center"><%= tactic.pitch %></h3>
-        </div>
-
-        <!-- List group -->
-        <ul class="list-group">
-          <li class="list-group-item"><strong>Strategy</strong><br> <%= link_to tactic.strategy.pitch, tactic.strategy %></li>
-          <li class="list-group-item"><strong>Plan</strong><br>
-            €<%= tactic.budget %><br>
-            <%= tactic.frequency %><br>from <%= tactic.start.strftime("%a %-d, %b %Y") %> to <%= tactic.end.strftime("%a %-d, %b %Y") %>
-          </li>
-          <li class="list-group-item"><strong>Description</strong><br> <%= simple_format tactic.description %></li>
-          <li class="list-group-item"><strong>Medium</strong><br> <%= simple_format tactic.medium %></li>
-          <li class="list-group-item"><strong>Key Performance Indicator</strong><br> <%= simple_format tactic.kpi %></li>
-          <li class="list-group-item"><strong>POC</strong><br> <%= link_to tactic.poc.name, tactic.poc %></li>
-        </ul>
-
-        <div class="panel-body">
-
-          <div class="btn-group pull-right" role="group" aria-label="...">
-            <%= link_to "Edit", edit_tactic_path(tactic), class: "btn btn-sm btn-default" %>
-          </div>
-          
-        </div>
-      </div>
-
-    </div> <!-- close col-md-4 -->
-  <% end %>
-</div>   <!-- close row -->
-
+<%= render partial: 'tactics/tactics', locals: {tactics: @tactics} %>
 
 <hr>
 <h3>Points of Contact <span class="badge"><%= @company.pocs.count %></span></h3>
