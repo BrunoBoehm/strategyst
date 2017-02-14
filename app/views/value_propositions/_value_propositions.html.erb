@@ -16,6 +16,9 @@
           <li class="list-group-item"><strong>Differentiation:</strong><br> <%= simple_format vp.differentiation %></li>
           <li class="list-group-item"><strong>Gain Creator:</strong><br> <%= simple_format vp.gain_creator %></li>
           <li class="list-group-item"><strong>Pain Reliever:</strong><br> <%= simple_format vp.pain_reliever %></li>
+          <li class="list-group-item">
+            <%= render partial: 'personas/personas', locals: {personas: vp.personas} %>
+          </li>
         </ul>
 
         <div class="panel-body">

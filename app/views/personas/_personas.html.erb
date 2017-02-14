@@ -1,6 +1,51 @@
 <div class="row">
   <% personas.each do |persona| %>
     <div class="col-md-4">
+
+      <div class="panel panel-success">
+        <!-- Default panel contents -->
+        <div class="panel-heading animate">
+          <h3 class="panel-title text-center"><%= persona.name %></h3>
+        </div>
+
+        <!-- List group -->
+        <ul class="list-group">
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4"><strong>Role</strong><br> <%= persona.role %></div>
+              <div class="col-md-4"><strong>Age, Education</strong><br><%= persona.age.humanize %>, <%= persona.education.humanize %></div>
+              <div class="col-md-4"><strong>Income</strong><br> <%= persona.income.humanize %></div>
+            </div>
+          </li>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-4">
+                <img src="<%= persona.img %>" alt="<%= persona.name %>" class="thumbnail">
+              </div>
+              <div class="col-md-8">
+                <ul class="list-group">
+                  <li class="list-group-item"><strong>Story</strong><br> <%= simple_format persona.story %></li>
+                  <li class="list-group-item"><strong>Jobs</strong><br> <%= simple_format persona.jobs %></li>
+                  <li class="list-group-item"><strong>Pains</strong><br> <%= simple_format persona.pains %></li>
+                  <li class="list-group-item"><strong>Gains</strong><br> <%= simple_format persona.gains %></li>
+                </ul>  
+                
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item"><strong>Touch Points</strong><br> <%= simple_format persona.touch_points %></li>
+          <li class="list-group-item"><strong>Segment</strong><br> <%= persona.segment.name %></li>
+        </ul>
+
+        <div class="panel-body">
+          <div class="btn-group pull-right" role="group" aria-label="...">
+            <%= link_to "Edit", edit_persona_path(persona), class: "btn btn-sm btn-default" %>
+          </div>
+        </div>
+
+      </div><!-- close panel -->    
+
+<!-- 
       <div class="thumbnail">
         <img src="<%= persona.img %>" alt="<%= persona.name %>" class="blurb-image">
 
@@ -10,7 +55,10 @@
           <%= link_to "edit", edit_persona_path(persona), class: "btn btn-sm btn-default pull-right" %>
           <p class="clearfix"></p>
         </div>
-      </div>
+      </div> -->
+
+
+
     </div>
   <% end %>
 </div>

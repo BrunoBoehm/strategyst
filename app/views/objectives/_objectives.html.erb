@@ -12,23 +12,13 @@
         <ul class="list-group">
           <li class="list-group-item"><strong>Segment</strong> <%= link_to objective.segment.name, objective.segment %></li>
           <li class="list-group-item"><strong>Personas</strong> <br>
-            <ul>
-              <% objective.segment.personas.each do |persona| %>
-                <li><%= link_to persona.name, persona %><br>
-                    (<%= persona.role %>)
-                </li>
-              <% end %>
-            </ul>
+            <%= render partial: 'personas/personas', locals: {personas: objective.segment.personas} %>
           </li>
           <li class="list-group-item"><strong>KPI</strong><br> <%= objective.measurable %></li>
           <li class="list-group-item"><strong>Achievable?</strong><br> <%= simple_format objective.achievable %></li>
           <li class="list-group-item"><strong>Realism</strong><br> <%= simple_format objective.realistic %></li>
           <li class="list-group-item"><strong>Strategies</strong> <br>
-            <ul>
-              <% objective.strategies.each do |strategy| %>
-                <li><%= link_to strategy.pitch, strategy %></li>
-              <% end %>
-            </ul>
+            <%= render partial: 'strategies/strategies', locals: {strategies: objective.strategies} %>
           </li>          
         </ul>
 

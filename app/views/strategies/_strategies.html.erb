@@ -14,13 +14,7 @@
           <li class="list-group-item"><strong>Description</strong><br> <%= simple_format strategy.description %></li>
           <li class="list-group-item"><strong>Key Success Factors</strong><br> <%= simple_format strategy.ksf %></li>
           <li class="list-group-item"><strong>Tactics</strong> <br>
-            <ul>
-              <% strategy.tactics.each do |tactic| %>
-                <li><%= link_to tactic.pitch, tactic %> <br>
-                  (prio <%= tactic.importance %>)
-                </li>
-              <% end %>
-            </ul>
+            <%= render partial: 'tactics/tactics', locals: {tactics: strategy.tactics} %>
           </li>
         </ul>
 

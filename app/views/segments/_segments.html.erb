@@ -16,27 +16,9 @@
           <li class="list-group-item">
             <strong>Personas</strong><br>
             <%= render partial: 'personas/personas', locals: {personas: segment.personas} %>
-<!--             <ul>
-              <% segment.personas.each do |persona| %>
-                <li><%= link_to persona.name, persona %>
-                	<% unless persona.role.blank? %>
-                	<br>(<%= persona.role %>)
-                	<% end %>
-                </li>
-              <% end %>
-            </ul> -->
           </li>
           <li class="list-group-item">
             <strong>Objectives</strong><br>
-<!--             <ul>
-              <% segment.objectives.each do |objective| %>
-                <li><%= link_to objective.specific, objective %>
-                	<% unless objective.measurable.blank? %>
-                	<br>(<%= objective.measurable %>)
-                	<% end %>
-                </li>
-              <% end %>
-            </ul> -->
             <%= render partial: 'objectives/objectives', locals: {objectives: segment.objectives} %>
           </li>          
         </ul>
