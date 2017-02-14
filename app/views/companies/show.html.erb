@@ -1,11 +1,17 @@
-<%= image_tag @company.logo, class: "thumbnail pull-right" %>
-<h1><%= link_to @company.name, @company.website %></h1>
-<p>
-  <strong><%= simple_format @company.pitch %></strong>
-</p>
-<address>
-<%= simple_format @company.address %>
-</address>
+<div class="row">
+  <div class="col-md-8">
+    <h1><%= link_to @company.name, @company.website %></h1>
+    <p>
+      <strong><%= simple_format @company.pitch %></strong>
+    </p>
+    <address>
+    <%= simple_format @company.address %>
+    </address>
+  </div>
+  <div class="col-md-4">
+    <%= image_tag @company.logo, class: "thumbnail pull-right" %>
+  </div>
+</div>
 
 <div class="row">
   <div class="col-md-6">
@@ -343,7 +349,7 @@
     $('.panel-heading').nextAll().hide();
 
     $('.panel-heading').click(function(e){
-      $(this).closest('div[class*="col-md"]').toggleClass('col-md-4 col-md-12');
+      $(this).closest('div[class*="col-md-4"]').toggleClass('col-md-4 col-md-12');
       $(this).nextAll().toggle( 'slow' );
       e.stopPropagation(); 
     })
