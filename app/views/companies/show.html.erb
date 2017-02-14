@@ -164,7 +164,8 @@
   <% @personas.each do |persona| %>
     <div class="col-md-4">
       <div class="thumbnail">
-        <img src="<%= persona.img %>" alt="<%= persona.name %>">
+        <img src="<%= persona.img %>" alt="<%= persona.name %>" class="blurb-image">
+
         <div class="caption">
           <h3><%= persona.name %></h3>
           <p><span class="label label-info"><%= persona.segment.name %></span> / <span class="label label-info"><%= persona.role %></span></p>
@@ -315,7 +316,7 @@
   <% @company.pocs.each do |poc| %>
     <div class="col-md-4">
       <div class="thumbnail">
-        <a href="<%= poc.linkedin %>"><img src="<%= poc.img %>" alt="<%= poc.name %>"></a>
+        <img src="<%= poc.img %>" alt="<%= poc.name %>" class="blurb-image">
         <div class="caption">
           <h3><%= poc.name %></h3>
           <p><span class="label label-info"><%= poc.title %></span> acting as POC <span class="label label-info"><%= poc.role %></span></p>
