@@ -2,7 +2,7 @@
   <% objectives.each do |objective| %>
     <div class="col-md-4">
 
-      <div class="panel panel-success">
+      <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading animate">
           <h3 class="panel-title text-center"><%= objective.title %></h3>
@@ -10,12 +10,12 @@
 
         <!-- List group -->
         <ul class="list-group">
-          <li class="list-group-item"><%= objective.specific %></li>
+          <li class="list-group-item"><%= simple_format objective.specific %></li>
           <li class="list-group-item"><strong>Segment</strong> <%= link_to objective.segment.name, objective.segment %></li>
           <li class="list-group-item"><strong>Personas</strong> <br>
             <%= render partial: 'personas/personas', locals: {personas: objective.segment.personas} %>
           </li>
-          <li class="list-group-item"><strong>KPI</strong><br> <%= objective.measurable %></li>
+          <li class="list-group-item"><strong>KPI</strong><br> <%= simple_format objective.measurable %></li>
           <li class="list-group-item"><strong>Achievable?</strong><br> <%= simple_format objective.achievable %></li>
           <li class="list-group-item"><strong>Realism</strong><br> <%= simple_format objective.realistic %></li>
           <li class="list-group-item"><strong>Strategies</strong> <br>

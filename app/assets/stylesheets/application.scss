@@ -4,12 +4,23 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-.navbar .container {
-	margin-top: 0;
+$orange: #fa5d56;
+$grey1: #ececec;
+
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 200; 
 }
 
-.container {
-	margin-top: 70px;
+
+body > div:nth-child(2) {
+    padding-top: 80px;
+}
+
+.navbar .container {
+    padding-top: 0px;
 }
 
 .input-group {
@@ -18,7 +29,7 @@
 
 
 a {
-  color: #fa5d56;
+  color: $orange;
   -o-transition:.5s;
   -ms-transition:.5s;
   -moz-transition:.5s;
@@ -44,3 +55,27 @@ img.blurb-image {
 .thumbnail {
 	max-width: 100%;
 }
+
+.logo {
+	max-width: 100%;
+}
+
+section {
+	padding: 40px 0;
+	margin: 20px 0; 
+	&.low-accent {
+		background-color: $grey1;
+	}
+	&.high-accent {
+		background-color: $orange;
+	}
+}
+
+footer {
+	padding-bottom: 10px;
+	border-bottom: 8px solid $orange;
+}
+
+/*h3 {
+	color: $orange;
+}*/

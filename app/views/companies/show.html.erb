@@ -1,130 +1,138 @@
-<div class="row">
-  <div class="col-md-8">
-    <h1><%= link_to @company.name, @company.website %></h1>
-    <p>
-      <strong><%= simple_format @company.pitch %></strong>
-    </p>
-    <address>
-    <%= simple_format @company.address %>
-    </address>
-  </div>
-  <div class="col-md-4">
-    <%= image_tag @company.logo, class: "thumbnail pull-right" %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-6">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-camera-retro" aria-hidden="true"></i> Context</h3>
-      </div>
-      <div class="panel-body">
-        <%= simple_format @company.context %>
-      </div>
-    </div>    
-  </div>
-  <div class="col-md-6">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-crosshairs" aria-hidden="true"></i> Goal</h3>
-      </div>
-      <div class="panel-body">
-        <%= simple_format @company.goal %>
-      </div>  
-    </div>
-  </div>
-</div>
-
-
-
-
-<div class="well">
+<div class="container">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-8">
+      <h1><%= link_to @company.name, @company.website %></h1>
       <p>
-        <h4>Mission</h4>
-        <%= simple_format @company.mission %>
+        <strong><%= simple_format @company.pitch %></strong>
       </p>
+      <address>
+      <%= simple_format @company.address %>
+      </address>
     </div>
-
     <div class="col-md-4">
-      <p>
-        <h4>Vision</h4>
-        <%= simple_format @company.vision %>
-      </p>
+      <%= image_tag @company.logo, class: "logo pull-right" %>
     </div>
-
-    <div class="col-md-4">
-      <p>
-        <h4>Values</h4>
-        <%= simple_format @company.values %>
-      </p>
-    </div>        
   </div>
 
-</div>
-
-<button type="button" class="btn btn-default"><%= link_to 'Edit', edit_company_path(@company) %></button>  
-<div class="btn-group" role="group" aria-label="...">
-  <button type="button" class="btn btn-default"><%= link_to "Add POC", new_company_poc_path(@company) %></button>
-  <button type="button" class="btn btn-default"><%= link_to "Add Value Proposition", new_company_value_proposition_path(@company) %></button>
-  <button type="button" class="btn btn-default"><%= link_to "Add Market Segment", new_company_segment_path(@company) %></button>
-</div>
-
-
-<hr>
-<h3>Segments <span class="badge"><%= @company.segments.count %></span></h3>
-<%= render partial: 'segments/segments', locals: {segments: @company.segments} %>
-
-<hr>
-<h3>Value Propositions <span class="badge"><%= @company.value_propositions.count %></span></h3>
-<%= render partial: 'value_propositions/value_propositions', locals: {value_propositions: @company.value_propositions} %>
-
-<hr>
-<h3>Personas <span class="badge"><%= @personas.count %></span></h3>
-<%= render partial: 'personas/personas', locals: {personas: @personas} %>
-
-<hr>
-<h3>Objectives <span class="badge"><%= @objectives.count %></span></h3>
-<%= render partial: 'objectives/objectives', locals: {objectives: @objectives} %>
-
-<hr>
-<h3>Strategies <span class="badge"><%= @strategies.count %></span></h3>
-<%= render partial: 'strategies/strategies', locals: {strategies: @strategies} %>
-
-<hr>
-<h3>Tactics <span class="badge"><%= @tactics.count %></span></h3>
-<%= render partial: 'tactics/tactics', locals: {tactics: @tactics} %>
-
-<hr>
-<h3>Points of Contact <span class="badge"><%= @company.pocs.count %></span></h3>
-<div class="row">
-  <% @company.pocs.each do |poc| %>
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <img src="<%= poc.img %>" alt="<%= poc.name %>" class="blurb-image">
-        <div class="caption">
-          <h3><%= poc.name %></h3>
-          <p><span class="label label-info"><%= poc.title %></span> acting as POC <span class="label label-info"><%= poc.role %></span></p>
-          <p><i class="fa fa-phone" aria-hidden="true"></i> <%= poc.telephone %><br>
-            <i class="fa fa-envelope" aria-hidden="true"></i> <%= poc.email %>
-          </p>
-          <div class="btn-group btn-group-sm" role="group" aria-label="...">
-            <button type="button" class="btn btn-default">
-              <a href="<%= poc.twitter %>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            </button>
-            <button type="button" class="btn btn-default">
-              <a href="<%= poc.linkedin %>"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-            </button>            
-          </div>
-          <%= link_to "edit", edit_poc_path(poc), class: "btn btn-sm btn-default pull-right" %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-camera-retro" aria-hidden="true"></i> Context</h3>
         </div>
+        <div class="panel-body">
+          <%= simple_format @company.context %>
+        </div>
+      </div>    
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-crosshairs" aria-hidden="true"></i> Goal</h3>
+        </div>
+        <div class="panel-body">
+          <%= simple_format @company.goal %>
+        </div>  
       </div>
     </div>
-  <% end %>
-</div>
+  </div>
 
+  <div class="well">
+    <div class="row">
+      <div class="col-md-4">
+        <p>
+          <h4>Mission</h4>
+          <%= simple_format @company.mission %>
+        </p>
+      </div>
+
+      <div class="col-md-4">
+        <p>
+          <h4>Vision</h4>
+          <%= simple_format @company.vision %>
+        </p>
+      </div>
+
+      <div class="col-md-4">
+        <p>
+          <h4>Values</h4>
+          <%= simple_format @company.values %>
+        </p>
+      </div>        
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-default"><%= link_to 'Edit', edit_company_path(@company) %></button>  
+  <div class="btn-group" role="group" aria-label="...">
+    <button type="button" class="btn btn-default"><%= link_to "Add POC", new_company_poc_path(@company) %></button>
+    <button type="button" class="btn btn-default"><%= link_to "Add Value Proposition", new_company_value_proposition_path(@company) %></button>
+    <button type="button" class="btn btn-default"><%= link_to "Add Market Segment", new_company_segment_path(@company) %></button>
+  </div>
+
+</div> <!-- end of first container -->
+
+<section class="low-accent">
+  <div class="container">
+    
+    <h3>Value Propositions <span class="badge"><%= @company.value_propositions.count %></span></h3>
+    <%= render partial: 'value_propositions/value_propositions', locals: {value_propositions: @company.value_propositions} %>    
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h3>Segments <span class="badge"><%= @company.segments.count %></span></h3>
+    <%= render partial: 'segments/segments', locals: {segments: @company.segments} %>
+
+    <h3>Personas <span class="badge"><%= @personas.count %></span></h3>
+    <%= render partial: 'personas/personas', locals: {personas: @personas} %>
+  </div>
+</section>
+
+<section class="low-accent">
+  <div class="container">
+    <h3>Objectives <span class="badge"><%= @objectives.count %></span></h3>
+    <%= render partial: 'objectives/objectives', locals: {objectives: @objectives} %>
+
+    <h3>Strategies <span class="badge"><%= @strategies.count %></span></h3>
+    <%= render partial: 'strategies/strategies', locals: {strategies: @strategies} %>
+
+    <h3>Tactics <span class="badge"><%= @tactics.count %></span></h3>
+    <%= render partial: 'tactics/tactics', locals: {tactics: @tactics} %>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h3>Points of Contact <span class="badge"><%= @company.pocs.count %></span></h3>
+    <div class="row">
+      <% @company.pocs.each do |poc| %>
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <img src="<%= poc.img %>" alt="<%= poc.name %>" class="blurb-image">
+            <div class="caption">
+              <h3><%= poc.name %></h3>
+              <p><span class="label label-info"><%= poc.title %></span> acting as POC <span class="label label-info"><%= poc.role %></span></p>
+              <p><i class="fa fa-phone" aria-hidden="true"></i> <%= poc.telephone %><br>
+                <i class="fa fa-envelope" aria-hidden="true"></i> <%= poc.email %>
+              </p>
+              <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                <button type="button" class="btn btn-default">
+                  <a href="<%= poc.twitter %>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                </button>
+                <button type="button" class="btn btn-default">
+                  <a href="<%= poc.linkedin %>"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                </button>            
+              </div>
+              <%= link_to "edit", edit_poc_path(poc), class: "btn btn-sm btn-default pull-right" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>  
+</section>
 
 <ul class="pager">
   <li><%= link_to 'Edit Company', edit_company_path(@company) %></li>

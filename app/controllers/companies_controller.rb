@@ -15,6 +15,8 @@ class CompaniesController < ApplicationController
     @strategies = @objectives.map(&:strategies).flatten
     @tactics = @strategies.map(&:tactics).flatten
     @personas = @segments.map(&:personas).flatten
+
+    render layout: "full_width"
   end
 
   # GET /companies/new
