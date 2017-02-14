@@ -5,11 +5,12 @@
       <div class="panel panel-success">
         <!-- Default panel contents -->
         <div class="panel-heading animate">
-          <h3 class="panel-title text-center"><%= vp.product_service %></h3>
+          <h3 class="panel-title text-center"><%= vp.name %></h3>
         </div>
 
         <!-- List group -->
         <ul class="list-group">
+          <li class="list-group-item"><%= vp.product_service %></li>
           <li class="list-group-item"><strong>Price:</strong> <%= vp.price %></li>
           <li class="list-group-item"><strong>Promotion:</strong><br> <%= simple_format vp.promotion %></li>
           <li class="list-group-item"><strong>Place:</strong><br> <%= simple_format vp.place %></li>
