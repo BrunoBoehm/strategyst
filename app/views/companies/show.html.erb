@@ -71,37 +71,7 @@
   <button type="button" class="btn btn-default"><%= link_to "Add Value Proposition", new_company_value_proposition_path(@company) %></button>
   <button type="button" class="btn btn-default"><%= link_to "Add Market Segment", new_company_segment_path(@company) %></button>
 </div>
-<p>
-  
-</p>
 
-<hr>
-<h3>Points of Contact <span class="badge"><%= @company.pocs.count %></span></h3>
-<div class="row">
-  <% @company.pocs.each do |poc| %>
-    <div class="col-md-4">
-      <div class="thumbnail">
-        <a href="<%= poc.linkedin %>"><img src="<%= poc.img %>" alt="<%= poc.name %>"></a>
-        <div class="caption">
-          <h3><%= poc.name %></h3>
-          <p><span class="label label-info"><%= poc.title %></span> acting as POC <span class="label label-info"><%= poc.role %></span></p>
-          <p><i class="fa fa-phone" aria-hidden="true"></i> <%= poc.telephone %><br>
-            <i class="fa fa-envelope" aria-hidden="true"></i> <%= poc.email %>
-          </p>
-          <div class="btn-group btn-group-sm" role="group" aria-label="...">
-            <button type="button" class="btn btn-default">
-              <a href="<%= poc.twitter %>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-            </button>
-            <button type="button" class="btn btn-default">
-              <a href="<%= poc.linkedin %>"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-            </button>            
-          </div>
-          <%= link_to "edit", edit_poc_path(poc), class: "btn btn-sm btn-default pull-right" %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
 
 <hr>
 <h3>Segments <span class="badge"><%= @company.segments.count %></span></h3>
@@ -111,7 +81,7 @@
 
       <div class="panel panel-primary">
         <!-- Default panel contents -->
-        <div class="panel-heading">
+        <div class="panel-heading animate">
           <h3 class="panel-title text-center"><%= segment.name %></h3>
         </div>
         
@@ -160,7 +130,7 @@
 
       <div class="panel panel-success">
         <!-- Default panel contents -->
-        <div class="panel-heading">
+        <div class="panel-heading animate">
           <h3 class="panel-title text-center"><%= vp.product_service %></h3>
         </div>
 
@@ -189,7 +159,7 @@
 </div>   <!-- close row -->
 
 <hr>
-<h3>Personas <span class="badge"><%= @company.pocs.count %></span></h3>
+<h3>Personas <span class="badge"><%= @personas.count %></span></h3>
 <div class="row">
   <% @personas.each do |persona| %>
     <div class="col-md-4">
@@ -214,7 +184,7 @@
 
       <div class="panel panel-success">
         <!-- Default panel contents -->
-        <div class="panel-heading">
+        <div class="panel-heading animate">
           <h3 class="panel-title text-center"><%= objective.specific %></h3>
         </div>
 
@@ -265,7 +235,7 @@
 
       <div class="panel panel-danger">
         <!-- Default panel contents -->
-        <div class="panel-heading">
+        <div class="panel-heading animate">
           <h3 class="panel-title text-center"><%= strategy.pitch %></h3>
         </div>
 
@@ -308,7 +278,7 @@
 
       <div class="panel panel-danger">
         <!-- Default panel contents -->
-        <div class="panel-heading">
+        <div class="panel-heading animate">
           <h3 class="panel-title text-center"><%= tactic.pitch %></h3>
         </div>
 
@@ -338,6 +308,36 @@
   <% end %>
 </div>   <!-- close row -->
 
+
+<hr>
+<h3>Points of Contact <span class="badge"><%= @company.pocs.count %></span></h3>
+<div class="row">
+  <% @company.pocs.each do |poc| %>
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="<%= poc.linkedin %>"><img src="<%= poc.img %>" alt="<%= poc.name %>"></a>
+        <div class="caption">
+          <h3><%= poc.name %></h3>
+          <p><span class="label label-info"><%= poc.title %></span> acting as POC <span class="label label-info"><%= poc.role %></span></p>
+          <p><i class="fa fa-phone" aria-hidden="true"></i> <%= poc.telephone %><br>
+            <i class="fa fa-envelope" aria-hidden="true"></i> <%= poc.email %>
+          </p>
+          <div class="btn-group btn-group-sm" role="group" aria-label="...">
+            <button type="button" class="btn btn-default">
+              <a href="<%= poc.twitter %>"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </button>
+            <button type="button" class="btn btn-default">
+              <a href="<%= poc.linkedin %>"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            </button>            
+          </div>
+          <%= link_to "edit", edit_poc_path(poc), class: "btn btn-sm btn-default pull-right" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
 <ul class="pager">
   <li><%= link_to 'Edit Company', edit_company_path(@company) %></li>
   <li><%= link_to 'All Companies', companies_path %></li>
@@ -346,10 +346,10 @@
 
 <script>
   $(document).ready(function(){
-    $('.panel-heading').nextAll().hide();
+    $('.panel-heading.animate').nextAll().hide();
 
-    $('.panel-heading').click(function(e){
-      $(this).closest('div[class*="col-md-4"]').toggleClass('col-md-4 col-md-12');
+    $('.panel-heading.animate').click(function(e){
+      $(this).closest('div[class*="col-md"]').toggleClass('col-md-4 col-md-12');
       $(this).nextAll().toggle( 'slow' );
       e.stopPropagation(); 
     })
