@@ -5,6 +5,9 @@ class CompaniesController < ApplicationController
   # GET /companies.json
   def index
     @companies = Company.all
+
+    # for our on-click form
+    @company = Company.new
   end
 
   # GET /companies/1
