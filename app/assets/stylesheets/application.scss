@@ -3,15 +3,12 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
-$orange: #fa5d56;
-$grey1: #ececec;
-
+@import "bootstrap-variables";
 
 .navbar {
     position: fixed;
     width: 100%;
-    z-index: 200; 
+    z-index: 200;
 }
 
 
@@ -34,11 +31,11 @@ a {
   -ms-transition:.5s;
   -moz-transition:.5s;
   -webkit-transition:.5s;
-  transition:.5s;	
+  transition:.5s;
 	&:hover {
 	  color: purple;
 	  text-decoration: none;
-	}  
+	}
 }
 
 .companies .logo {
@@ -62,7 +59,7 @@ img.blurb-image {
 
 section {
 	padding: 40px 0;
-	margin: 20px 0; 
+	margin: 20px 0;
 	&.low-accent {
 		background-color: $grey1;
 	}
@@ -79,3 +76,7 @@ footer {
 /*h3 {
 	color: $orange;
 }*/
+
+.add-item {
+  font-size: $sm;
+}
