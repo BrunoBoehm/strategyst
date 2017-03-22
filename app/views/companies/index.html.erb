@@ -27,11 +27,16 @@
 
 <%= link_to 'New Company', new_company_path, class: "btn btn-default" %>
 
+<div class="open-form">
+
+</div>
+
 <script>
   // 1. on the click of NEW COMPANY let's show the form
   $('a[href="/companies/new"]').on("click", function(e){
     e.preventDefault();
     // alert("Thanks for clicking");
-    $(this).after("<%= j(render 'form') %>");
+    $('.open-form').html("<%= j(render 'form_partial') %>");
+    $('.myModal').modal('show');
   })
 </script>
