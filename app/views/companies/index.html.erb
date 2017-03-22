@@ -36,7 +36,13 @@
   $('a[href="/companies/new"]').on("click", function(e){
     e.preventDefault();
     // alert("Thanks for clicking");
-    $('.open-form').html("<%= j(render 'form_partial') %>");
-    $('.myModal').modal('show');
-  })
+    $('.open-form').html("<%= j(render 'form') %>").hide().slideDown(1000);
+  });
+
+  // 2. when click on submit form (only in the case this modal)
+  //    2.0. it should hijack the button click and stay right here
+  //    2.1. it should send and AJAX post request
+  //    2.2. it should add from the server response the new company to the DOM list
+  //    2.3. it should close the modal
+
 </script>
