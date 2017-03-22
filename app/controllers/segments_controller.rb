@@ -10,6 +10,8 @@ class SegmentsController < ApplicationController
   # GET /segments/1
   # GET /segments/1.json
   def show
+    # raise("error").inspect
+    # just to test for our failing getJSON
   end
 
   # GET /segments/new
