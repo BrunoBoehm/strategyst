@@ -49,12 +49,11 @@
   function attachSubmitHandler(){
     $('form').on("submit", function(e){
       e.preventDefault();
-      alert("click");
-      debugger;
       var $form = $(this);
       var url = $form.attr("action");  // /companies
       var params = $(this).serialize();  // we want the jQuery object, not just 'this'
       var method = $form.attr("method");  // "post"
+
       $.ajax({
         url: url,
         data: params,
@@ -62,11 +61,16 @@
         dataType: "json"
       })
       .success(function(response){
-
-        console.log(response);
+        var html = "<tr>";
+        html += '<td><a href="/companies/' + response.id + '">' + response.name + '</a></td>';
+        html += '<td><a href="/companies/' + response.id + '"><img class="logo" src="' + response.logo + '" alt="Logo"></a></td>';
+        html += '<td><a href="/companies/' + response.id + '/edit">Edit</a></td>';
+        html += '<td><a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/companies/' + response.id + '">Destroy</a></td></tr>';
+        $('tbody').append(html);
+        $('.open-form').slideUp(500);
       })
       .error(function(error){
-        alert("There was an issue, try again", error);
+        alert("There was an issue, try again " + error.responseText);
       })
     })
   }
