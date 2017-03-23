@@ -1,10 +1,10 @@
 # Specs
 
-[] render at least one index page via jQuery and an Active Model Serialization JSON Backend (on a has many relationship)
-[] render at least one show page, like the next post being fetched and rendered via JQuery/AJAX
-[] rails API must reveal at least one has-many relationship in the JSON that is then rendered to the page
-[] use your Rails API and a form to create and serialize a resource and render the response without a page refresh
-[] translate the JSON responses into Javascript Model Objects, that must have at least one method on the prototype. Formatters work really well for this. Eg: create a Comment prototype object and add a function to that prototype to perhaps concatenate (format) the comments authors first and last name. You would then use the object to append the comment information to the DOM
+[ ] render at least one index page via jQuery and an Active Model Serialization JSON Backend (on a has many relationship)
+[ ] render at least one show page, like the next post being fetched and rendered via JQuery/AJAX
+[ ] rails API must reveal at least one has-many relationship in the JSON that is then rendered to the page
+[x] use your Rails API and a form to create and serialize a resource and render the response without a page refresh
+[ ] translate the JSON responses into Javascript Model Objects, that must have at least one method on the prototype. Formatters work really well for this. Eg: create a Comment prototype object and add a function to that prototype to perhaps concatenate (format) the comments authors first and last name. You would then use the object to append the comment information to the DOM
 
 
 
