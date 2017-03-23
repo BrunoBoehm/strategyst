@@ -11,9 +11,14 @@ class SegmentsController < ApplicationController
   # GET /segments/1.json
   def show
     # set_segment by before_action
-  
+
     # raise("error").inspect
     # just to test for our failing getJSON
+
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @segment }
+    end
   end
 
   # GET /segments/new
