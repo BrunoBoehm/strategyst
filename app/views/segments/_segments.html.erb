@@ -1,5 +1,12 @@
 <div class="row">
   <% segments.each do |segment| %>
+  <div class="col-md-4">
+
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading animate">
+        <h3 class="panel-title text-center"><%= segment.name %></h3>
+      </div>
 
         <!-- List group -->
         <ul class="list-group">
@@ -24,7 +31,7 @@
           </div>
         </div>
 
-      </div>
+      </div> <!-- close Default panel contents -->
 
     </div> <!-- close col-md-4 -->
   <% end %>
