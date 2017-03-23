@@ -175,9 +175,22 @@
     <li class="list-group-item"><strong>Description</strong><br> {{description}}</li>
     <li class="list-group-item"><strong>Size</strong><br> {{size}}</li>
     <li class="list-group-item"><strong>Growth</strong><br> {{growth}}</li>
+    {{#if personas}}
     <li class="list-group-item">
       <strong>Personas</strong><br>
+        <div class="row">
+        {{#each personas}}
+          <div class="col-md-4">
+            <div class="panel panel-default">
+              <div class="panel-heading animate">
+                <h3 class="panel-title text-center">{{name}}</h3>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+        </div>
     </li>
+    {{/if}}
     <li class="list-group-item">
       <strong>Objectives</strong><br>
     </li>
