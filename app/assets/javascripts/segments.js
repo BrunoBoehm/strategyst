@@ -4,7 +4,9 @@ $(document).ready(function(){
   Segment.templateSource = $('#segment-template').html();
   Segment.template = Handlebars.compile(Segment.templateSource);
 
-  $('.segments h3.panel-title').on("click", function(){
+  // using .one() makes sure this will only happen for the first clicks
+  $('.segments h3.panel-title').one("click", function(){
+    // if I use var, will not be available inside $.getJSON
     $segment = $(this);
     $id = $segment.data('segment-id');
 
@@ -14,7 +16,6 @@ $(document).ready(function(){
       console.log(response);
       var segment = new Segment(response);
       var segmentHTML = Segment.template(segment);
-      debugger;
       $segment.closest('.panel-default').append(segmentHTML);
     })
     .error(function(error){
