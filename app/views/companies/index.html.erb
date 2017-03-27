@@ -94,14 +94,24 @@
   function setCompanies(response){
     console.log(response);
     html = '';
+
     $.each(response, function(index, company){
+      var segmentsList = function(company){
+        return company.segments.map(function(segment, index){
+          return segment.name;
+        }).join(', ');
+      };
+
       html += `<tr>
       <td><a href="/companies/${company.id}">${company.name}</a></td>
       <td><img class="logo" src="${company.logo}" alt="Logo"></td>
+      <td>${segmentsList(company)}</td>
       <td class="editCompany"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></td>
       </tr>`;
     });
+
     $('.ajax tbody').html(html);
+
     attachButtonHandler();
   }
 

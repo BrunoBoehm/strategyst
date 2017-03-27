@@ -10,7 +10,7 @@ class CompaniesController < ApplicationController
     @company = Company.new
 
     respond_to do |format|
-      format.html { render :index }
+      format.html
       format.json { render json: @companies }
     end
   end
