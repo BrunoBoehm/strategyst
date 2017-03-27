@@ -17,8 +17,8 @@
 <p class="text-center"><%= link_to 'New Company', new_company_path, class: "btn btn-default" %></p>
 
 <!-- This div is used to insert the new company form by jQuery -->
-
 <div class="open-form hidden"></div>
+
 
 <script>
   // 1. on the click of NEW COMPANY let's show the form
@@ -102,7 +102,7 @@
         }).join(', ');
       };
 
-      html += `<tr>
+      html += `<tr data-id="${company.id}">
       <td><a href="/companies/${company.id}">${company.name}</a></td>
       <td><img class="logo" src="${company.logo}" alt="Logo"></td>
       <td>${segmentsList(company)}</td>
@@ -112,10 +112,10 @@
 
     $('.ajax tbody').html(html);
 
-    attachButtonHandler();
+    attachAdminButtonHandler();
   }
 
-  function attachButtonHandler(){
+  function attachAdminButtonHandler(){
     $('.editCompany').hover(function(){
       $(this).css("color", "red");
     }, function(){
@@ -123,8 +123,24 @@
     });
 
     $('.editCompany').on("click", function(){
-      $(this).html('<a href="#" class=".editCompanyBtn">Edit</a> | <a href="#" class=".deleteCompanyBtn">Delete</a>')
-    })
+      $(this).html('<a href="#" class="editCompanyBtn">Edit</a> | <a href="#" class="deleteCompanyBtn">Delete</a>')
+      attachEditDeleteBtnHandlers();
+    });
+  }
+
+  function attachEditDeleteBtnHandlers(){
+    $('.editCompanyBtn').on('click', function(event){
+      event.preventDefault();
+      var btn = $(this);
+      console.log('Farewell from attachEditDeleteBtnHandlers');
+      var companyId = btn.closest('tr').data("id");
+      window.location.href = "/companies/" + companyId + "/edit";
+      return false;
+    });
+
+    $('.deleteCompanyBtn').on('click', function(event){
+      
+    });
   }
 
 </script>

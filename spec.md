@@ -1,6 +1,6 @@
 # Specs
 
-[ ] render at least one index page via jQuery and an Active Model Serialization JSON Backend (on a has many relationship)
+[x] render at least one index page via jQuery and an Active Model Serialization JSON Backend (on a has many relationship)
 [ ] render at least one show page, like the next post being fetched and rendered via JQuery/AJAX
 [x] rails API must reveal at least one has-many relationship in the JSON that is then rendered to the page
 [x] use your Rails API and a form to create and serialize a resource and render the response without a page refresh
