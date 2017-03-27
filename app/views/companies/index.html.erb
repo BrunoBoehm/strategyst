@@ -132,15 +132,35 @@
     $('.editCompanyBtn').on('click', function(event){
       event.preventDefault();
       var btn = $(this);
-      console.log('Farewell from attachEditDeleteBtnHandlers');
+      console.log('Yo from attachEditDeleteBtnHandlers');
       var companyId = btn.closest('tr').data("id");
       window.location.href = "/companies/" + companyId + "/edit";
       return false;
     });
 
     $('.deleteCompanyBtn').on('click', function(event){
-      
+      event.preventDefault();
+      var btn = $(this);
+      console.log('Yo from attachEditDeleteBtnHandlers');
+      var companyId = btn.closest('tr').data("id");
+      $.ajax({
+        method: "DELETE",
+        url: "/companies/" + companyId,
+        dataType: "json"
+      })
+      .done(deleteSuccess)
+      .fail(deleteFail);
     });
+
+    function deleteSuccess(){
+      console.log("Deletion! We made it guys.");
+      loadCompanies();
+    }
+
+    function deleteFail(){
+      console.log("Upsss");
+    }
+
   }
 
 </script>
