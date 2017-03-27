@@ -87,7 +87,7 @@
 
 
 
-<!-- This section uses JQUERY to load segments -->
+<!-- This section uses JQUERY to load segments and personas -->
 
 <section>
   <div class="container">
@@ -107,8 +107,22 @@
       <!-- <%#= render partial: 'segments/segments', locals: {segments: @company.segments} %> -->
     </div> <!-- end of the .segments div   -->
 
-    <h3>Personas <span class="badge"><%= @personas.count %></span></h3>
-    <%= render partial: 'personas/personas', locals: {personas: @personas} %>
+    <div class="personas">
+      <h3>Personas <span class="badge"><%= @personas.count %></span></h3>
+      <div class="row">
+        <% @personas.each do |persona| %>
+          <div class="col-md-4">
+            <div class="panel panel-default">
+              <!-- Default panel contents -->
+              <div class="panel-heading animate">
+                <h3 class="panel-title text-center" data-persona-id="<%= persona.id %>"><%= persona.name %></h3>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <!-- <%#= render partial: 'personas/personas', locals: {personas: @personas} %> -->
+    </div>
   </div>
 </section>
 
@@ -189,17 +203,19 @@
     {{#if personas}}
     <li class="list-group-item">
       <strong>Personas</strong><br>
+      <div class="personas">
         <div class="row">
         {{#each personas}}
           <div class="col-md-4">
             <div class="panel panel-default">
               <div class="panel-heading animate">
-                <h3 class="panel-title text-center">{{name}}</h3>
+                <h3 class="panel-title text-center" data-persona-id="{{id}}">{{name}}</h3>
               </div>
             </div>
           </div>
         {{/each}}
         </div>
+      </div>
     </li>
     {{/if}}
 
@@ -222,6 +238,7 @@
   </ul>
 </script>
 
+<!-- CAUTION: PARTIAL APPROACHING -->
 <!-- This is a HANDLEBARS #persona-template used to display information about a PERSONA -->
 <script id="persona-template" type="text/x-handlebars-template">
   <%= render 'personas/persona_handlebars' %>
