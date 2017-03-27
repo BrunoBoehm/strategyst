@@ -1,5 +1,6 @@
 $(document).ready(function(){
   $('.panel-heading.animate').nextAll().hide();
+  // nextAll() : searches through the successors of these elements, doesn't include the targeted one
 
   $('.panel-heading.animate').click(function(e){
     $(this).closest('div[class*="col-md"]').toggleClass('col-md-4 col-md-12');
