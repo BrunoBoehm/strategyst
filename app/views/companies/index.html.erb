@@ -1,49 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Companies</h1>
-
-<table class="table table-striped companies">
+<table class="table table-striped companies ajax">
   <thead>
     <tr>
       <th>Name</th>
       <th>Logo</th>
-      <th colspan="2"></th>
+      <th colspan="2">Edit</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @companies.each do |company| %>
-      <tr>
-        <td><%= link_to company.name, company %></td>
-        <td><%= link_to image_tag(company.logo, class: "logo"), company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
   </tbody>
 </table>
-
-<br>
 
 <p class="text-center"><%= link_to 'New Company', new_company_path, class: "btn btn-default" %></p>
 
 <!-- This div is used to insert the new company form by jQuery -->
 
 <div class="open-form hidden"></div>
-
-<h2>Listing with AJAX</h2>
-<table class="table table-striped companies ajax">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Logo</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-  </tbody>
-</table>
 
 <script>
   // 1. on the click of NEW COMPANY let's show the form
@@ -107,10 +81,8 @@
     return errorString;
   }
 
-</script>
 
 <!-- This script is for loading the companies table through ajax at page load -->
-<script>
   $(window).on('load', loadCompanies);
 
   function loadCompanies(){

@@ -15,7 +15,7 @@
 		<% if user_signed_in? %>
 
 			<ul class="nav navbar-nav">
-				<li><%= link_to "Companies", companies_path %></li>
+				<li><%= link_to "Companies", companies_path, data: { turbolinks: false } %></li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
@@ -33,7 +33,7 @@
 				<button type="button" class="btn btn-default"><%= link_to " Objective", new_objective_path %></button>
 				<button type="button" class="btn btn-default"><%= link_to " Strategy", new_strategy_path %></button>
 				<button type="button" class="btn btn-default"><%= link_to " Tactic", new_tactic_path %></button>
-			</div>      
+			</div>
 
 		<% else %>
 

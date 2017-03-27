@@ -19,7 +19,10 @@ class CompaniesController < ApplicationController
     @tactics = @strategies.map(&:tactics).flatten
     @personas = @segments.map(&:personas).flatten
 
-    render layout: "full_width"
+    respond_to do |format|
+      format.html { render layout: "full_width" }
+      format.json { render json: @company }
+    end
   end
 
   # GET /companies/new
