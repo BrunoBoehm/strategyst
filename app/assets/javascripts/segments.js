@@ -6,7 +6,7 @@ $(document).ready(function(){
 
   // event delegation on something that's fixed
   // using .one() makes sure this AJAX request will only happen for the first click
-  $('.container').one("click", '.segments h3.panel-title', function(){
+  $('.segments h3.panel-title').one("click", function(){
     // if I use var, will not be available inside $.getJSON ?? because of the anonymous function ?
     $segment = $(this);
     $id = $segment.data('segment-id');

@@ -7,7 +7,7 @@ $(function(){
 
 function personaClickHandler(){
   var loaded = {};
-  // we make sure not to make an ajax call twice
+  // we want to make sure not to make an ajax call twice
   $('.container').on('click', '.personas h3.panel-title', function(event){
     console.log(event);
     var $persona = $(this);
@@ -20,6 +20,7 @@ function personaClickHandler(){
       if ( !$persona.closest('.panel-default').data('mounted') ) addPersonaToDOM(persona);
       console.log("No duplicate Ajax call");
       console.log("Not mounted");
+      // we want to make sure not to mount twice on the same clicked element
     } else {
       $.ajax({
         url: "/personas/" + $id,
