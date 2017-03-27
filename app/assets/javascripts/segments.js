@@ -4,9 +4,9 @@ $(document).ready(function(){
   Segment.templateSource = $('#segment-template').html();
   Segment.template = Handlebars.compile(Segment.templateSource);
 
-  // using .one() makes sure this will only happen for the first clicks
+  // using .one() makes sure this AJAX request will only happen for the first click
   $('.segments h3.panel-title').one("click", function(){
-    // if I use var, will not be available inside $.getJSON
+    // if I use var, will not be available inside $.getJSON ?? because of the anonymous function ?
     $segment = $(this);
     $id = $segment.data('segment-id');
 
@@ -25,6 +25,7 @@ $(document).ready(function(){
 
 })
 
+// Constructor function
 function Segment(attributes) {
   this.name = attributes.name;
   this.description = attributes.description;
@@ -34,6 +35,7 @@ function Segment(attributes) {
   this.objectives = attributes.objectives   // needs a serializer of has_many here, gives an array of objects
 }
 
+// "instance method" on an instance of the Segment object
 Segment.prototype.renderSegment = function(){
   return Segment.template(this);
 }

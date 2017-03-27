@@ -85,6 +85,10 @@
   </div>
 </section>
 
+
+
+<!-- This section uses JQUERY to load segments -->
+
 <section>
   <div class="container">
     <div class="segments">
@@ -157,6 +161,7 @@
   <li><%= link_to 'All Companies', companies_path %></li>
 </ul>
 
+<!-- This is a MODAL from BOOTSTRAP supposed to show the EDIT for the relevant element -->
 <div class="modal fade myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -174,6 +179,7 @@
   </div>
 </div>
 
+<!-- This is a HANDLEBARS #segment-template used to display information about a SEGMENT -->
 <script id="segment-template" type="text/x-handlebars-template">
   <ul class="list-group">
     <li class="list-group-item"><strong>Description</strong><br> {{description}}</li>
@@ -216,10 +222,10 @@
   </ul>
 </script>
 
-<script id="segment-template" type="text/x-handlebars-template">
+<!-- <script id="segment-template" type="text/x-handlebars-template">
   <ul class="list-group">
     <li class="list-group-item"><strong>Description</strong><br> {{description}}</li>
     <li class="list-group-item"><strong>Size</strong><br> {{size}}</li>
     <li class="list-group-item"><strong>Growth</strong><br> {{growth}}</li>
   </ul>
-</script>
+</script> -->
