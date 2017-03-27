@@ -50,7 +50,6 @@
       var url = $form.attr("action");  // /companies
       var params = $(this).serialize();  // we want the jQuery object, not just 'this'
       var method = $form.attr("method");  // "post"
-
       $.ajax({
         url: url,
         data: params,
@@ -58,18 +57,22 @@
         dataType: "json"
       })
       .success(function(response){
-        var html = "<tr>";
+        var html = '<tr data-id="' + response.id + '">';
         html += '<td><a href="/companies/' + response.id + '">' + response.name + '</a></td>';
         html += '<td><a href="/companies/' + response.id + '"><img class="logo" src="' + response.logo + '" alt="Logo"></a></td>';
         html += '<td></td>';
-        html += '<td><a href="/companies/' + response.id + '/edit">Edit</a> | <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/companies/' + response.id + '">Destroy</a></td>';
+        html += '<td class="editCompany"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></td>';
         html += '</tr>';
         $('tbody').append(html);
         $('.open-form').slideUp(500);
+        $('a[href="/companies/new"]').text("Create another Company");
+        $('.open-form').toggleClass('hidden').slideDown(500);
+        attachAdminButtonHandler();
       })
       .error(function(error){
-        var errorString = handleError(error);
-        alert("There was an issue, try again: " + errorString);
+        // var errorString = handleError(error);
+        // alert("There was an issue, try again: " + errorString);
+        console.log(error.responseText);
       })
     })
   }
@@ -143,6 +146,7 @@
       var btn = $(this);
       console.log('Yo from attachEditDeleteBtnHandlers');
       var companyId = btn.closest('tr').data("id");
+      confirm("Are you sure you want to destroy this company?");
       $.ajax({
         method: "DELETE",
         url: "/companies/" + companyId,
