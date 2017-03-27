@@ -43,9 +43,9 @@
 
   // 2. when click on submit form (only in the case this modal)
   //    2.0. [x] it should hijack the button click and stay right here
-  //    2.1. [ ] it should send and AJAX post request
-  //    2.2. [ ] it should add from the server response the new company to the DOM list
-  //    2.3. [ ] it should close the modal
+  //    2.1. [x] it should send and AJAX post request
+  //    2.2. [x] it should add from the server response the new company to the DOM list
+  //    2.3. [0] it should close the modal
   function attachSubmitHandler(){
     $('form').on("submit", function(e){
       e.preventDefault();
@@ -70,9 +70,19 @@
         $('.open-form').slideUp(500);
       })
       .error(function(error){
-        alert("There was an issue, try again " + error.responseText);
+        var errorString = handleError(error);
+        alert("There was an issue, try again: " + errorString);
       })
     })
+  }
+
+  function handleError(error){
+    var errorJSON = JSON.parse(error.responseText);
+    var errorString = "";
+    for (var key in errorJSON){
+      errorString += key + " " + errorJSON[key];
+    }
+    return errorString;
   }
 
 </script>
