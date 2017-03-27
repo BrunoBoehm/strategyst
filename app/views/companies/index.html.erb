@@ -5,6 +5,7 @@
     <tr>
       <th>Name</th>
       <th>Logo</th>
+      <th>Segments</th>
       <th colspan="2">Edit</th>
     </tr>
   </thead>
@@ -60,8 +61,9 @@
         var html = "<tr>";
         html += '<td><a href="/companies/' + response.id + '">' + response.name + '</a></td>';
         html += '<td><a href="/companies/' + response.id + '"><img class="logo" src="' + response.logo + '" alt="Logo"></a></td>';
-        html += '<td><a href="/companies/' + response.id + '/edit">Edit</a></td>';
-        html += '<td><a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/companies/' + response.id + '">Destroy</a></td></tr>';
+        html += '<td></td>';
+        html += '<td><a href="/companies/' + response.id + '/edit">Edit</a> | <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/companies/' + response.id + '">Destroy</a></td>';
+        html += '</tr>';
         $('tbody').append(html);
         $('.open-form').slideUp(500);
       })

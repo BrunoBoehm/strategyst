@@ -8,6 +8,11 @@ class CompaniesController < ApplicationController
 
     # for our on-click form
     @company = Company.new
+
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @companies }
+    end
   end
 
   # GET /companies/1
