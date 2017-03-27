@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(window).load(function(){
   $('.panel-heading.animate').nextAll().hide();
   // nextAll() : searches through the successors of these elements, doesn't include the targeted one
 
@@ -15,7 +15,6 @@ $(document).ready(function(){
     $('.myModal').modal('show');
   })
 });
-
 
 function addHandlerAddItem(){
   $('.add-item').hide();

@@ -58,8 +58,8 @@
       })
       .success(function(response){
         var html = '<tr data-id="' + response.id + '">';
-        html += '<td><a href="/companies/' + response.id + '">' + response.name + '</a></td>';
-        html += '<td><a href="/companies/' + response.id + '"><img class="logo" src="' + response.logo + '" alt="Logo"></a></td>';
+        html += '<td><a href="/companies/' + response.id + '" data-turbolinks="false">' + response.name + '</a></td>';
+        html += '<td><a href="/companies/' + response.id + '" data-turbolinks="false"><img class="logo" src="' + response.logo + '" alt="Logo"></a></td>';
         html += '<td></td>';
         html += '<td class="editCompany"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></td>';
         html += '</tr>';
@@ -106,7 +106,7 @@
       };
 
       html += `<tr data-id="${company.id}">
-      <td><a href="/companies/${company.id}">${company.name}</a></td>
+      <td><a href="/companies/${company.id}" data-turbolinks="false">${company.name}</a></td>
       <td><img class="logo" src="${company.logo}" alt="Logo"></td>
       <td>${segmentsList(company)}</td>
       <td class="editCompany"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></td>
