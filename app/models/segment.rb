@@ -3,7 +3,7 @@ class Segment < ActiveRecord::Base
   has_many :objectives
   has_many :personas
 
-  validates :name, length: {maximum: 60}
+  validates :name, length: {maximum: 60}, presence: true
 
   enum growth: [ :na, :neutral, :slow, :high, :booming ]
 end
