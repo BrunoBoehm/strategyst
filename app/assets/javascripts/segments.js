@@ -30,7 +30,8 @@ function Segment(attributes) {
   this.description = attributes.description;
   this.size = attributes.size;
   this.growth = attributes.growth
-  this.personas = attributes.personas  // need a serializer of has_many here, gives a new hash.
+  this.personas = attributes.personas       // needs a serializer of has_many here, gives an array of objects
+  this.objectives = attributes.objectives   // needs a serializer of has_many here, gives an array of objects
 }
 
 Segment.prototype.renderSegment = function(){
