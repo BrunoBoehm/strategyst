@@ -14,7 +14,7 @@ $(window).load(function(){
 });
 
 function mountToggleCardHandler(){
-  // .click only works for elements already on the page. You have to use something like on if you are wiring up future elements
+  // $().click() only works for elements already on the page. You have to use something like on if you are wiring up future elements
   //  event delegation: delegate event to static parent of the dynamically added elements
   $('.container').on('click', '.panel-heading.animate', function(e){
     var heading = $(this);

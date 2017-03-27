@@ -4,7 +4,6 @@ $(document).ready(function(){
   Segment.templateSource = $('#segment-template').html();
   Segment.template = Handlebars.compile(Segment.templateSource);
 
-  // event delegation on something that's fixed
   // using .one() makes sure this AJAX request will only happen for the first click
   $('.segments h3.panel-title').one("click", function(){
     // if I use var, will not be available inside $.getJSON ?? because of the anonymous function ?

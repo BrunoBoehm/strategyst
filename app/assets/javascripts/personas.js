@@ -40,7 +40,7 @@ function personaClickHandler(){
     function addPersonaToDOM(persona){
       console.log("Adding persona to DOM");
       var personaHTML = Persona.template(persona);
-      $persona.closest('.panel-default').data('mounted', true).append(personaHTML);
+      $persona.closest('.panel-default').data('mounted', true).find('.list-group').html(personaHTML);
     }
 
   });
