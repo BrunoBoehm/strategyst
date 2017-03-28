@@ -1,29 +1,97 @@
-<p id="notice"><%= notice %></p>
+<div class="segmentPlaceholder" data-id="<%= @segment.id %>" data-limit="<%= @segments.length %>"></div>
+<nav aria-label="...">
+  <ul class="pager">
+    <li><a href="#" class="previousSegment">Previous</a></li>
+    <li><a href="#" class="nextSegment">Next</a></li>
+  </ul>
+</nav>
+
+
+<script id="segment-template" type="text/x-handlebars-template">
+  <h1>{{name}}</h1>
+  <ul class="list-group">
+    <li class="list-group-item"><strong>Description</strong><br> {{description}}</li>
+    <li class="list-group-item"><strong>Size</strong><br> {{size}}</li>
+    <li class="list-group-item"><strong>Growth</strong><br> {{growth}}</li>
+  </ul>
+</script>
+
+
+<script>
+  Segment.templateSource = $('#segment-template').html();
+  Segment.template = Handlebars.compile(Segment.templateSource);
+
+  $placeholder = $('.segmentPlaceholder');
+  $id = $placeholder.data('id');
+  $maxId = $placeholder.data('limit');
+
+  loadSegment();
+
+  function loadSegment(){
+    $.getJSON('/segments/' + $id)
+    .success(function(response){
+      console.log(response);
+      var segment = new Segment(response);
+      var segmentHTML = Segment.template(segment);
+      $placeholder.html(segmentHTML);
+    })
+    .error(function(error){
+      alert("There was a problem: " + error.statusText);
+    });
+  }
+
+  $('.previousSegment').on('click', function(event){
+    event.preventDefault();
+    console.log($id);
+    if ($id == 1) {
+      return false;
+    } else {
+      $id -= 1;
+      loadSegment();
+    }
+  })
+
+  $('.nextSegment').on('click', function(event){
+    event.preventDefault();
+    console.log($id);
+    if ($id == $maxId) {
+      return false;
+    } else {
+      $id += 1;
+      loadSegment();
+    }
+  })
+
+</script>
+
+
+
+<!-- <p id="notice"><%#= notice %></p>
 
 <p>
   <strong>Name:</strong>
-  <%= @segment.name %>
+  <%#= @segment.name %>
 </p>
 
 <p>
   <strong>Description:</strong>
-  <%= @segment.description %>
+  <%#= @segment.description %>
 </p>
 
 <p>
   <strong>Size:</strong>
-  <%= @segment.size %>
+  <%#= @segment.size %>
 </p>
 
 <p>
   <strong>Growth:</strong>
-  <%= @segment.growth %>
+  <%#= @segment.growth %>
 </p>
 
 <p>
   <strong>Company:</strong>
-  <%= link_to @segment.company.name, @segment.company %>
+  <%#= link_to @segment.company.name, @segment.company %>
 </p>
 
-<%= link_to 'Edit', edit_segment_path(@segment) %> |
-<%= link_to 'Back', segments_path %>
+<%#= link_to 'Edit', edit_segment_path(@segment) %> |
+<%#= link_to 'Back', segments_path %> -->

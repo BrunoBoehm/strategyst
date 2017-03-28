@@ -11,6 +11,7 @@ class SegmentsController < ApplicationController
   # GET /segments/1.json
   def show
     # set_segment by before_action
+    @segments = Segment.all
 
     # raise("error").inspect
     # just to test for our failing getJSON
